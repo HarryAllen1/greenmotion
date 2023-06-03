@@ -5,8 +5,9 @@
 	import { TabsTrigger } from '$components/ui/tabs';
 	import Route from './Route.svelte';
 	import Vehicle from './Vehicle.svelte';
+	import Stats from './Stats.svelte';
 </script>
-
+<div>
 <Tabs value="vehicle">
 	<TabsList class="grid w-full grid-cols-2">
 		<TabsTrigger value="vehicle">Vehicle</TabsTrigger>
@@ -19,3 +20,5 @@
 		<Route />
 	</TabsContent>
 </Tabs>
+<Stats />
+</div>
