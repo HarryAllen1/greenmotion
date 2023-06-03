@@ -16,6 +16,9 @@ const fallback: Record<string, string> = {
 };
 
 export default defineConfig({
+	build: {
+		target: 'es2022',
+	},
 	plugins: [
 		imagetools({
 			defaultDirectives: (url) => {
