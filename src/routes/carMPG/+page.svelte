@@ -1,5 +1,4 @@
 <script lang="ts">
-
 	let model = 'ford';
 	let year = '2019';
 	let make = 'f150';
@@ -24,17 +23,16 @@
 
 	<button
 		on:click={() => {
-			// fetch 
+			// fetch
 			// carMPG/year-model-make
 			fetch(`http://localhost:3000/carMPG/${year}-${model}-${make}`)
-			.then(res => res.json())
-			.then(data => {
-				mpg = data.mpg
-			})
-
+				.then((res) => res.json())
+				.then((data) => {
+					mpg = data.mpg;
+				});
 		}}
 	/>
-	<div>	
+	<div>
 		<label for="mpg">MPG:</label>
 		<input type="text" id="mpg" bind:value={mpg} />
 	</div>

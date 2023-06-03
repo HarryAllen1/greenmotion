@@ -3,6 +3,8 @@ module.exports = {
 	extends: [
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',
+		'plugin:@typescript-eslint/recommended-requiring-type-checking',
+		'plugin:@typescript-eslint/strict',
 		'plugin:svelte/recommended',
 		'prettier',
 	],
@@ -12,6 +14,8 @@ module.exports = {
 		sourceType: 'module',
 		ecmaVersion: 2020,
 		extraFileExtensions: ['.svelte'],
+		project: true,
+		tsconfigRootDir: __dirname,
 	},
 	env: {
 		browser: true,
@@ -27,4 +31,7 @@ module.exports = {
 			},
 		},
 	],
+	globals: {
+		google: 'readonly',
+	},
 };
