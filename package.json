@@ -39,6 +39,11 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@googlemaps/js-api-loader": "^1.15.2"
+		"@googlemaps/js-api-loader": "^1.15.2",
+		"class-variance-authority": "^0.6.0",
+		"clsx": "^1.2.1",
+		"lucide-svelte": "^0.233.0",
+		"tailwind-merge": "^1.13.0",
+		"tailwindcss-animate": "^1.0.5"
 	}
 }
