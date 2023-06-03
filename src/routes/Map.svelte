@@ -12,6 +12,7 @@
 				lng: 0,
 			},
 			zoom: 15,
+			mapId: '8ce1a75c61989e12',
 		});
 		navigator.geolocation.getCurrentPosition(
 			(pos) => {
@@ -35,4 +36,4 @@
 	});
 </script>
 
-<div id="map" class="w-[100vw] h-[100vh]" bind:this={mapEl} />
+<div id="map" class="w-full h-[100vh]" bind:this={mapEl} />
