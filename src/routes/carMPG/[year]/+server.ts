@@ -15,7 +15,6 @@ export const GET = (async ({ fetch, params }) => {
 	const item = js as { menuItem: { text: string; value: string }[] };
 
 	const makes = item.menuItem.map((item) => item.text);
-	let response = [];
 	const results = makes.map(async (make) => {
 		const makeId = item.menuItem.find((item) => item.text === make)?.value;
 		const modelRes = await fetch(
@@ -32,13 +31,14 @@ export const GET = (async ({ fetch, params }) => {
 
 		const menuItem = modelData.menuItem;
 		//if modelData.menuItem is not an array
-		if (!Array.isArray(menuItem)) {
-			return json({ make, models: menuItem.text });
-		} else {
+		if (Array.isArray(menuItem)) {
 			const models = menuItem.map((item) => item.text);
-			return json({ make, models });
+			console.log(models);
+			return { make, models: models };
+		} else {
+			console.log(menuItem.text);
+			return { make, models: [menuItem.text] };
 		}
 	});
-
-	return json(response);
+	return json(await Promise.all(results));
 }) as RequestHandler;
