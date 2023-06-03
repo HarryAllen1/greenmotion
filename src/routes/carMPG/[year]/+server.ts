@@ -33,10 +33,8 @@ export const GET = (async ({ fetch, params }) => {
 		//if modelData.menuItem is not an array
 		if (Array.isArray(menuItem)) {
 			const models = menuItem.map((item) => item.text);
-			console.log(models);
 			return { make, models: models };
 		} else {
-			console.log(menuItem.text);
 			return { make, models: [menuItem.text] };
 		}
 	});
