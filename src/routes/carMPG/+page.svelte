@@ -26,6 +26,18 @@
 		<label for="mpg">MPG:</label>
 		<input type="text" id="mpg" bind:value={mpg} />
 	</div>
+	<!-- fetch carMPG/year-make-model -->
+	<button on:click={() => {
+		fetch(`http://localhost:3000/carMPG/${year}-${make}-${model}`)
+			.then(res => res.json())
+			.then(data => {
+				mpg = data.mpg;
+			});
+	}}>Get MPG</button>
+	<div>
+		<label for="mpg">MPG:</label>
+		<input type="text" id="mpg" bind:value={mpg} />
+	</div>
 </main>
 
 <style>
