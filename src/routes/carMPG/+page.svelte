@@ -2,13 +2,16 @@
 
 	let model = 'ford';
 	let year = '2019';
-	/** @type {import('./$types').PageData} */
-	export let data;
+	let make = 'f150';
+	let mpg = '';
 </script>
 
 <main>
 	<h1>Make API Call</h1>
-
+	<div>
+		<label for="make">Make:</label>
+		<input type="text" id="model" bind:value={make} />
+	</div>
 	<div>
 		<label for="model">Model:</label>
 		<input type="text" id="model" bind:value={model} />
@@ -21,12 +24,20 @@
 
 	<button
 		on:click={() => {
-			data = {
-				model,
-				year
-			};
+			// fetch 
+			// carMPG/year-model-make
+			fetch(`http://localhost:3000/carMPG/${year}-${model}-${make}`)
+			.then(res => res.json())
+			.then(data => {
+				mpg = data.mpg
+			})
+
 		}}
 	/>
+	<div>	
+		<label for="mpg">MPG:</label>
+		<input type="text" id="mpg" bind:value={mpg} />
+	</div>
 </main>
 
 <style>
