@@ -1,1 +1,1 @@
-<h1>STATS</h1>
+<h1>Stats</h1>
