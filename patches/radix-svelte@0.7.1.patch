@@ -1,0 +1,65 @@
+diff --git a/dist/components/Select/root.svelte b/dist/components/Select/root.svelte
+index b8fcf88e998315186b612f15babdf306eb6e2b6e..1648d421bca6a95931c205d3d090db0e55b41621 100644
+--- a/dist/components/Select/root.svelte
++++ b/dist/components/Select/root.svelte
+@@ -1,31 +1,36 @@
+-<script context="module">import { useActions } from "../../internal/helpers";
+-const defaults = {
++<script context="module">
++  import { useActions } from '../../internal/helpers';
++  const defaults = {
+     open: false,
+-    value: void 0
+-};
+-const { getContext, setContext } = reactiveContext(defaults);
+-export const getSelectRootContext = getContext;
++    value: void 0,
++  };
++  const { getContext, setContext } = reactiveContext(defaults);
++  export const getSelectRootContext = getContext;
+ </script>
+ 
+-<script>import { Popper } from "../../internal/components";
+-import { reactiveContext } from "../../internal/helpers";
+-export let use = [];
+-export let value = void 0;
+-export let open = defaults.open;
+-export let name = "";
+-export let dir = "ltr";
+-export let disabled = false;
+-export let required = false;
+-const ctx = setContext({ open: (v) => open = v, value: (v) => value = v });
+-$: ctx.set({ open, value });
++<script>
++  import { Popper } from '../../internal/components';
++  import { reactiveContext } from '../../internal/helpers';
++  export let use = [];
++  export let value = void 0;
++  export let open = defaults.open;
++  export let name = '';
++  export let dir = 'ltr';
++  export let disabled = false;
++  export let required = false;
++  const ctx = setContext({
++    open: (v) => (open = v),
++    value: (v) => (value = v),
++  });
++  $: ctx.set({ open, value });
+ </script>
+ 
+ <Popper.Root>
+-	<div {...$$restProps} use:useActions={use ?? []}>
+-		{JSON.stringify($ctx)}
+-		<slot />
+-		{#if name}
+-			<input type="hidden" {name} {value} />
+-		{/if}
+-	</div>
++  <div {...$$restProps} {dir} use:useActions={use ?? []}>
++    {JSON.stringify($ctx)}
++    <slot />
++    {#if name}
++      <input type="hidden" {disabled} {required} {name} {value} />
++    {/if}
++  </div>
+ </Popper.Root>

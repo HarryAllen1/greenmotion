@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  radix-svelte@0.7.1:
+    hash: bbhxoepk543i3gcwm2bbzv5ipe
+    path: patches/radix-svelte@0.7.1.patch
+
 dependencies:
   '@googlemaps/js-api-loader':
     specifier: ^1.15.2
@@ -19,7 +24,7 @@ dependencies:
     version: 0.233.0(svelte@3.59.1)
   radix-svelte:
     specifier: ^0.7.1
-    version: 0.7.1(svelte@3.59.1)
+    version: 0.7.1(patch_hash=bbhxoepk543i3gcwm2bbzv5ipe)(svelte@3.59.1)
   tailwind-merge:
     specifier: ^1.13.0
     version: 1.13.0
@@ -2308,7 +2313,7 @@ packages:
   /queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
-  /radix-svelte@0.7.1(svelte@3.59.1):
+  /radix-svelte@0.7.1(patch_hash=bbhxoepk543i3gcwm2bbzv5ipe)(svelte@3.59.1):
     resolution: {integrity: sha512-A6ZJK0uWqWYxIf6bAXs5R9r3Zf3e1ftLCqqWxVom4uIfADhmyC/cMvpDUAN19QqOcety02a5zwAT6RGf1CGWEg==}
     peerDependencies:
       svelte: ^3.58.0
@@ -2317,6 +2322,7 @@ packages:
       '@floating-ui/dom': 1.2.9
       svelte: 3.59.1
     dev: false
+    patched: true
 
   /rc@1.2.8:
     resolution: {integrity: sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==}

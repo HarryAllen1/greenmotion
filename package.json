@@ -46,5 +46,10 @@
 		"radix-svelte": "^0.7.1",
 		"tailwind-merge": "^1.13.0",
 		"tailwindcss-animate": "^1.0.5"
+	},
+	"pnpm": {
+		"patchedDependencies": {
+			"radix-svelte@0.7.1": "patches/radix-svelte@0.7.1.patch"
+		}
 	}
 }
