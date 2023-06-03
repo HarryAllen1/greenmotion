@@ -1,7 +1,11 @@
-import { GOOGLE_MAPS_API_KEY } from '$env/static/private';
+import { PUBLIC_GOOGLE_MAPS_API_KEY } from '$env/static/public';
 import { Loader } from '@googlemaps/js-api-loader';
 
-const loader = await new Loader({
-	apiKey: GOOGLE_MAPS_API_KEY,
+await new Loader({
+	apiKey: PUBLIC_GOOGLE_MAPS_API_KEY,
 	version: 'weekly',
 }).load();
+
+export const { Map: GoogleMap } = (await google.maps.importLibrary(
+	'maps'
+)) as google.maps.MapsLibrary;
