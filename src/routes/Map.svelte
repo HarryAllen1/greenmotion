@@ -8,6 +8,10 @@
 	onMount(async () => {
 		const { GoogleMap } = await import('$lib/maps');
 		const m = new GoogleMap(mapEl, {
+			backgroundColor: 'var(--background',
+			fullscreenControl: false,
+			streetViewControl: false,
+
 			center: {
 				lat: 0,
 				lng: 0,
@@ -38,4 +42,4 @@
 	});
 </script>
 
-<div id="map" class="w-full h-[100vh]" bind:this={mapEl} />
+<div id="map" class="w-full h-[100vh] not-prose" bind:this={mapEl} />
