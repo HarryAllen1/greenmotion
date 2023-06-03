@@ -8,12 +8,11 @@ export const GET = (async ({ fetch, params }) => {
 			Accept: 'application/json',
 		},
 	});
-	const js = await res.json();
-	const item = js as { menuItem: { text: string; value: string }[] };
+	const item = (await res.json()) as { menuItem: { text: string; value: string }[] };
 
 	const makes = item.menuItem.map((item) => item.text);
 	const results = makes.map(async (make) => {
-		const makeId = item.menuItem.find((item) => item.text === make)?.value;
+		const makeId = item.menuItem.find((item) => item.text === make)?.value ?? '';
 		const modelRes = await fetch(
 			`https://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=${params.year}&make=${makeId}`,
 			{
@@ -27,7 +26,6 @@ export const GET = (async ({ fetch, params }) => {
 		};
 
 		const menuItem = modelData.menuItem;
-		//if modelData.menuItem is not an array
 		if (Array.isArray(menuItem)) {
 			const models = menuItem.map((item) => item.text);
 			return { make, models: models };

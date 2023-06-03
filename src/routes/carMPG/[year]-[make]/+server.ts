@@ -8,8 +8,7 @@ export const GET = (async ({ fetch, params }) => {
 			Accept: 'application/json',
 		},
 	});
-	const js = await res.json();
-	const item = js as { menuItem: { text: string; value: string }[] };
+	const item = (await res.json()) as { menuItem: { text: string; value: string }[] };
 
 	const models = item.menuItem.map((item) => item.text);
 	return json(models);
