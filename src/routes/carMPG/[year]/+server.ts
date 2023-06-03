@@ -26,10 +26,11 @@ export const GET = (async ({ fetch, params }) => {
 				},
 			}
 		);
-		const modelData = (await modelRes.json()) as { menuItem: { text: string; value: string }[] };
+		const modelData = (await modelRes.json()) as {
+			menuItem: { text: string; value: string }[] | { text: string; value: string };
+		};
 
-		console.log(modelData);
-        const menuItem = modelData.menuItem;
+		const menuItem = modelData.menuItem;
 		//if modelData.menuItem is not an array
 		if (!Array.isArray(menuItem)) {
 			return json({ make, models: menuItem.text });
@@ -38,9 +39,6 @@ export const GET = (async ({ fetch, params }) => {
 			return json({ make, models });
 		}
 	});
-    try {
-
-    }
 
 	return json(response);
 }) as RequestHandler;
