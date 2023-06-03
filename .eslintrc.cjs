@@ -5,6 +5,7 @@ module.exports = {
 		'plugin:@typescript-eslint/recommended',
 		'plugin:@typescript-eslint/recommended-requiring-type-checking',
 		'plugin:@typescript-eslint/strict',
+		'plugin:unicorn/recommended',
 		'plugin:svelte/recommended',
 		'prettier',
 	],
@@ -31,6 +32,11 @@ module.exports = {
 			},
 		},
 	],
+	rules: {
+		'no-console': ['error', { allow: ['warn', 'error'] }],
+		'unicorn/prevent-abbreviations': 'off',
+		'unicorn/filename-case': 'off',
+	},
 	globals: {
 		google: 'readonly',
 	},

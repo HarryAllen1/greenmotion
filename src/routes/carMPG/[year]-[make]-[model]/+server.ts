@@ -1,11 +1,15 @@
-export const GET = async ({ fetch, params }) => {
+import { json } from '@sveltejs/kit';
+import type { RequestHandler } from './$types';
+import type { MPGData } from './types';
+
+export const GET = (async ({ fetch, params }) => {
 	const id = `menu/options?year=${params.year}&make=${params.make}&model=${params.model}`;
 	const res = await fetch(`https://www.fueleconomy.gov/ws/rest/vehicle/${id}`, {
 		headers: {
 			Accept: 'application/json',
 		},
 	});
-	const item = await res.json();
+	const item = (await res.json()) as { menuItem: { text: string; value: string }[] };
 
 	const vehicleId = item.menuItem[0].value;
 	const mpgRes = await fetch(`https://www.fueleconomy.gov/ws/rest/vehicle/${vehicleId}`, {
@@ -13,8 +17,8 @@ export const GET = async ({ fetch, params }) => {
 			Accept: 'application/json',
 		},
 	});
-	const mpgData = await mpgRes.json();
-	console.log(mpgData);
+	const mpgData = (await mpgRes.json()) as MPGData;
+
 	const cityMpg = mpgData.city08;
 	const highwayMpg = mpgData.highway08;
 
@@ -23,7 +27,5 @@ export const GET = async ({ fetch, params }) => {
 		highwayMpg: highwayMpg || 'N/A',
 	};
 
-	return new Response(JSON.stringify(response), {
-		headers: { 'Content-Type': 'application/json' },
-	});
-};
+	return json(response);
+}) satisfies RequestHandler;

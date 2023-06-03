@@ -21,17 +21,7 @@
 		<input type="text" id="year" bind:value={year} />
 	</div>
 
-	<button
-		on:click={() => {
-			// fetch
-			// carMPG/year-model-make
-			fetch(`http://localhost:3000/carMPG/${year}-${model}-${make}`)
-				.then((res) => res.json())
-				.then((data) => {
-					mpg = data.mpg;
-				});
-		}}
-	/>
+	<button />
 	<div>
 		<label for="mpg">MPG:</label>
 		<input type="text" id="mpg" bind:value={mpg} />
