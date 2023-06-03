@@ -9,9 +9,6 @@ export const GET = (async ({ fetch, params }) => {
 		},
 	});
 	const js = await res.json();
-	if (js === null) {
-		return json({ makes: [] });
-	}
 	const item = js as { menuItem: { text: string; value: string }[] };
 
 	const makes = item.menuItem.map((item) => item.text);
