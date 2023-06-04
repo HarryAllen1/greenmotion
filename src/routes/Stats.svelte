@@ -36,13 +36,10 @@
 	let wastedJoules = 0;
 
 	onMount(() => {
-		if (!model || !year || !make) {
-			return;
-		}
-		vehicleDistance = Number(localStorage.getItem('distance')) ?? 0;
-		vehicleTime = Number(localStorage.getItem('time')) ?? 0;
-		pedestrianDistance = Number(localStorage.getItem('pDistance')) ?? 0;
-		pedestrianTime = Number(localStorage.getItem('pTime')) ?? 0;
+		vehicleDistance = Number(localStorage.getItem('distance')) ?? 4;
+		vehicleTime = Number(localStorage.getItem('time')) ?? 14;
+		pedestrianDistance = Number(localStorage.getItem('pDistance')) ?? 4.1;
+		pedestrianTime = Number(localStorage.getItem('pTime')) ?? 13;
 		pedestrianCalories = calculatePedestrianCalories(biking, weightRange);
 		gallons = vehicleDistance / mpg;
 		emissions = 8.887 * gallons;
