@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { calculatePedestrianCalories } from 'greenmotion-wasm';
+	import { onMount } from 'svelte';
 
 	let model = localStorage.getItem('model');
 	let year = localStorage.getItem('year');
@@ -12,8 +12,8 @@
 		fetch(`/carMPG/${year}-${make}-${model}`)
 			.then((res) => res.json())
 			.then((data) => {
-                console.log(data)
-                console.log(data.cityMpg)
+				console.log(data);
+				console.log(data.cityMpg);
 				mpg = data.cityMpg;
 			});
 	}
