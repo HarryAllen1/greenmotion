@@ -55,7 +55,7 @@
 		<select bind:value={weightRange}>
 			<option value="0">100-120</option>
 			<option value="1">121-140</option>
-			<option value="2">141-160</option>
+			<option value="2" selected={true}>141-160</option>
 			<option value="3">161-180</option>
 			<option value="4">181-200</option>
 			<option value="5">201-220</option>
