@@ -93,9 +93,9 @@
 		<label for="pedestrianTime">Time by {biking ? 'Bike' : 'Foot'} (min): {pedestrianTime}</label>
 	</div>
 	<div>
-		<label for="pedestrianCalories"
-			>Calories Burned by {biking ? 'Bike' : 'Foot'} (min): {pedestrianCalories}</label
-		>
+		<label for="pedestrianCalories">
+			Calories Burned by {biking ? 'Bike' : 'Foot'} (min): {pedestrianCalories}
+		</label>
 	</div>
 	<div>
 		<label for="gallons">Gallons of Gas: {gallons}</label>
