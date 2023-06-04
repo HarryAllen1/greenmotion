@@ -11,7 +11,7 @@
 
 <div>
 	<Splitpanes horizontal dblClickSplitter={false}>
-		<Pane minSize={20} size={80}>
+		<Pane minSize={20} size={60}>
 			<Tabs value="vehicle">
 				<TabsList class="grid w-full grid-cols-2">
 					<TabsTrigger value="vehicle">Vehicle</TabsTrigger>
