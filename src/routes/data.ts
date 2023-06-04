@@ -22,7 +22,13 @@ export const drivingData = writable<Data>({
 	time: 0,
 });
 
-export const pedestrianData = writable<PedestrianData>({
+export const walkingData = writable<PedestrianData>({
+	distance: 0,
+	time: 0,
+	weight: 2,
+});
+
+export const bikingData = writable<PedestrianData>({
 	distance: 0,
 	time: 0,
 	weight: 2,

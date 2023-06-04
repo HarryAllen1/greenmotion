@@ -1,16 +1,15 @@
 <script lang="ts">
 	import {
+		calculateCarJoules,
+		calculateEmissions,
+		calculateGallons,
 		calculatePedestrianCalories,
+		calculateWastedJoules,
 		metersToMiles,
 		secondsToMinutes,
-		calculateEmissions,
-		calculateCarJoules,
-		calculateWastedJoules,
-		calculateGallons,
 	} from 'greenmotion-wasm';
 	import { onMount } from 'svelte';
-	import { drivingData, pedestrianData, carData } from './data';
-
+	import { carData, drivingData, walkingData, bikingData} from './data';
 
 	let model = $carData.model;
 	let year = $carData.year;
@@ -21,14 +20,14 @@
 	let weightRange = 2;
 	$: vehicleDistance = metersToMiles($drivingData.distance);
 	$: vehicleTime = secondsToMinutes($drivingData.time);
-	$: pedestrianDistance = metersToMiles($pedestrianData.distance);
-	$: pedestrianTime = secondsToMinutes($pedestrianData.time);
+	$: pedestrianDistance = metersToMiles(biking ? $bikingData.distance : $walkingData.distance);
+	$: pedestrianTime = secondsToMinutes(biking ? $bikingData.time : $walkingData.time);
 	$: pedestrianCalories = calculatePedestrianCalories(biking, weightRange);
 	$: gallons = calculateGallons(vehicleDistance, mpg);
 	$: emissions = calculateEmissions(gallons);
 	$: carJoules = calculateCarJoules(vehicleDistance, mpg);
 	$: wastedJoules = calculateWastedJoules(carJoules, pedestrianCalories);
-	$: weightRange = $pedestrianData.weight;
+	$: weightRange = biking? $bikingData.weight : $walkingData.weight;
 	onMount(() => {
 		if (model && year && make) {
 			void fetch(`/carMPG/${year}-${make}-${model}`)
@@ -41,11 +40,7 @@
 	});
 
 	function updatePedestrianStore() {
-		$pedestrianData = {
-			distance: pedestrianDistance,
-			time: pedestrianTime,
-			weight: weightRange,
-		};
+		biking ? ($bikingData.weight = weightRange) : ($walkingData.weight = weightRange);
 	}
 </script>
 
