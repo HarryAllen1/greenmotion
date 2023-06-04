@@ -9,7 +9,7 @@
 		secondsToMinutes,
 	} from 'greenmotion-wasm';
 	import { onMount } from 'svelte';
-	import { carData, drivingData, walkingData, bikingData} from './data';
+	import { bikingData, carData, drivingData, walkingData } from './data';
 
 	let model = $carData.model;
 	let year = $carData.year;
@@ -27,7 +27,8 @@
 	$: emissions = calculateEmissions(gallons);
 	$: carJoules = calculateCarJoules(vehicleDistance, mpg);
 	$: wastedJoules = calculateWastedJoules(carJoules, pedestrianCalories);
-	$: weightRange = biking? $bikingData.weight : $walkingData.weight;
+	$: weightRange = biking ? $bikingData.weight : $walkingData.weight;
+
 	onMount(() => {
 		if (model && year && make) {
 			void fetch(`/carMPG/${year}-${make}-${model}`)
