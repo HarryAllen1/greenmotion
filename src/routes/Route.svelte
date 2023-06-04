@@ -4,52 +4,43 @@
 	import { map } from './map';
 	import { Button } from '$components/ui/button';
 
+	let directionsRenderer: google.maps.DirectionsRenderer;
+	let directionsService: google.maps.DirectionsService;
+
 	let startLocation = '';
 	let startEl: HTMLInputElement;
+	let origin: google.maps.places.Autocomplete;
 	let endLocation = '';
 	let endEl: HTMLInputElement;
+	let destination: google.maps.places.Autocomplete;
 
 	let currentlyShown: 'driving' | 'walking' = 'driving';
 
+	$: currentlyShown, route(origin, destination);
+
 	onMount(async () => {
-		const directionsRenderer = new google.maps.DirectionsRenderer();
+		directionsRenderer = new google.maps.DirectionsRenderer();
+		directionsService = new google.maps.DirectionsService();
 		directionsRenderer.setMap(get(map));
-		const origin = new google.maps.places.Autocomplete(startEl, {});
-		const destination = new google.maps.places.Autocomplete(endEl, {});
-		origin.addListener('place_changed', () => route(origin, destination, directionsRenderer));
-		destination.addListener('place_changed', () => route(origin, destination, directionsRenderer));
+		origin = new google.maps.places.Autocomplete(startEl, {});
+		destination = new google.maps.places.Autocomplete(endEl, {});
+		origin.addListener('place_changed', () => route(origin, destination));
+		destination.addListener('place_changed', () => route(origin, destination));
 	});
 
 	const route = (
 		origin: google.maps.places.Autocomplete,
-		destination: google.maps.places.Autocomplete,
-		directionsRenderer: google.maps.DirectionsRenderer
+		destination: google.maps.places.Autocomplete
 	) => {
-		const drivingDirectionsService = new google.maps.DirectionsService();
-		const walkingDirectionsService = new google.maps.DirectionsService();
-		const originPlace = origin.getPlace();
-		const destinationPlace = destination.getPlace();
+		const originPlace = origin?.getPlace();
+		const destinationPlace = destination?.getPlace();
 		if (!originPlace || !destinationPlace) return;
 
-		drivingDirectionsService.route(
+		directionsService.route(
 			{
 				origin: originPlace.formatted_address ?? '',
 				destination: destinationPlace.formatted_address ?? '',
 				travelMode: google.maps.TravelMode.DRIVING,
-			},
-			(res, status) => {
-				if (status === google.maps.DirectionsStatus.OK) {
-					directionsRenderer.setDirections(res);
-				} else {
-					console.error(status);
-				}
-			}
-		);
-		walkingDirectionsService.route(
-			{
-				origin: originPlace.formatted_address ?? '',
-				destination: destinationPlace.formatted_address ?? '',
-				travelMode: google.maps.TravelMode.WALKING,
 			},
 			(res, status) => {
 				if (status === google.maps.DirectionsStatus.OK) {
