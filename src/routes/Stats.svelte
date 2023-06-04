@@ -46,9 +46,9 @@
 </script>
 
 {#if !model || !year || !make}
-	<h1>Choose a car first</h1>
+	<h2 class="text-center">Choose a car first</h2>
 {:else}
-	<h1>Statistics</h1>
+	<h2 class="text-center">Statistics</h2>
 	<div>
 		<label for="weight">Weight Range:</label>
 		<select
