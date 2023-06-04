@@ -9,10 +9,12 @@
 		calculateGallons,
 	} from 'greenmotion-wasm';
 	import { onMount } from 'svelte';
+	import { drivingData, pedestrianData, carData } from './data';
 
-	let model = localStorage.getItem('model');
-	let year = localStorage.getItem('year');
-	let make = localStorage.getItem('make');
+
+	let model = $carData.model;
+	let year = $carData.year;
+	let make = $carData.make;
 
 	let mpg = 0;
 	let biking = true;
@@ -40,15 +42,15 @@
 				// eslint-disable-next-line unicorn/prefer-top-level-await
 				.then((data) => {
 					mpg = data.cityMpg;
-					vehicleDistance = Number(localStorage.getItem('distance') ?? '4');
-					vehicleTime = Number(localStorage.getItem('time') ?? '14');
-					pedestrianDistance = Number(localStorage.getItem('pDistance') ?? '4.1');
-					pedestrianTime = Number(localStorage.getItem('pTime') ?? '13');
+					vehicleDistance = metersToMiles($drivingData.distance);
+					vehicleTime = secondsToMinutes($drivingData.time);
+					pedestrianDistance = metersToMiles($pedestrianData.distance);
+					pedestrianTime = secondsToMinutes($pedestrianData.time);
 					pedestrianCalories = calculatePedestrianCalories(biking, weightRange);
 					gallons = calculateGallons(vehicleDistance, mpg);
 					emissions = calculateEmissions(gallons);
 					carJoules = calculateCarJoules(vehicleDistance, mpg);
-					wastedJoules = calculateWastedJoules(vehicleDistance, mpg);
+					wastedJoules = calculateWastedJoules(carJoules, pedestrianCalories);
 				});
 		}
 	});
