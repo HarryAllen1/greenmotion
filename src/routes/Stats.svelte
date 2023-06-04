@@ -52,14 +52,15 @@
 		}
 	});
 
-	const updatePedestrianStore = () =>
-		console.log(weightRange);
+	const updatePedestrianStore = () => {
 		localStorage.setItem('weightRange', weightRange.toString());
+		console.log("setting");
 		console.log(localStorage.getItem('weightRange'));
 		walkingData.update((data) => {
 			data.weight = weightRange;
 			return data;
 		});
+	}
 </script>
 
 {#if !model || !year || !make}
