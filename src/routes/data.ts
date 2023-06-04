@@ -1,22 +1,18 @@
 import { writable } from 'svelte/store';
 
 interface Data {
-	/** Joules */
-	energy: number;
-	/** Km */
+	/** metres */
 	distance: number;
-	/** Minutes */
+	/** seconds */
 	time: number;
 }
 
 export const drivingData = writable<Data>({
-	energy: 0,
 	distance: 0,
 	time: 0,
 });
 
 export const walkingData = writable<Data>({
-	energy: 0,
 	distance: 0,
 	time: 0,
 });
