@@ -11,7 +11,7 @@
 
 	const getMakes = async () => {
 		const res = await fetch(`/carMPG/${year}`);
-		const json = await res.json();
+		const json = (await res.json()) as string[];
 		makes = json;
 		if (makes.includes(make)) {
 			await getModels();
@@ -23,7 +23,7 @@
 
 	const getModels = async () => {
 		const res = await fetch(`/carMPG/${year}-${make}`);
-		const json = await res.json();
+		const json = (await res.json()) as string[];
 		models = json;
 		if (models.includes(model)) {
 			updateLocalStorage();

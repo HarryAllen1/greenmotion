@@ -5,15 +5,13 @@
 	let model = localStorage.getItem('model');
 	let year = localStorage.getItem('year');
 	let make = localStorage.getItem('make');
-	console.log(model, year, make);
 
 	let mpg = 0;
 	if (model && year && make) {
-		fetch(`/carMPG/${year}-${make}-${model}`)
-			.then((res) => res.json())
+		void fetch(`/carMPG/${year}-${make}-${model}`)
+			.then((res) => res.json() as Promise<Record<string, number>>)
+			// eslint-disable-next-line unicorn/prefer-top-level-await
 			.then((data) => {
-				console.log(data);
-				console.log(data.cityMpg);
 				mpg = data.cityMpg;
 			});
 	}
@@ -36,10 +34,10 @@
 	let wastedJoules = 0;
 
 	onMount(() => {
-		vehicleDistance = Number(localStorage.getItem('distance')) ?? 4;
-		vehicleTime = Number(localStorage.getItem('time')) ?? 14;
-		pedestrianDistance = Number(localStorage.getItem('pDistance')) ?? 4.1;
-		pedestrianTime = Number(localStorage.getItem('pTime')) ?? 13;
+		vehicleDistance = Number(localStorage.getItem('distance') ?? '4');
+		vehicleTime = Number(localStorage.getItem('time') ?? '14');
+		pedestrianDistance = Number(localStorage.getItem('pDistance') ?? '4.1');
+		pedestrianTime = Number(localStorage.getItem('pTime') ?? '13');
 		pedestrianCalories = calculatePedestrianCalories(biking, weightRange);
 		gallons = vehicleDistance / mpg;
 		emissions = 8.887 * gallons;

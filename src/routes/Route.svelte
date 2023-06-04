@@ -16,9 +16,9 @@
 
 	let currentlyShown: 'driving' | 'walking' = 'driving';
 
-	$: currentlyShown, route(origin, destination);
+	$: currentlyShown, void route(origin, destination);
 
-	onMount(async () => {
+	onMount(() => {
 		directionsRenderer = new google.maps.DirectionsRenderer();
 		directionsService = new google.maps.DirectionsService();
 		directionsRenderer.setMap(get(map));
@@ -28,15 +28,17 @@
 		destination.addListener('place_changed', () => route(origin, destination));
 	});
 
-	const route = (
+	const route = async (
 		origin: google.maps.places.Autocomplete,
 		destination: google.maps.places.Autocomplete
 	) => {
-		const originPlace = origin.getPlace();
-		const destinationPlace = destination.getPlace();
+		const originPlace: google.maps.places.PlaceResult | undefined = origin.getPlace();
+		const destinationPlace: google.maps.places.PlaceResult | undefined = destination.getPlace();
+
+		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 		if (!originPlace || !destinationPlace) return;
 
-		directionsService.route(
+		await directionsService.route(
 			{
 				origin: originPlace.formatted_address ?? '',
 				destination: destinationPlace.formatted_address ?? '',
