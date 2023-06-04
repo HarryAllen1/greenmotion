@@ -15,7 +15,7 @@
 		if (makes.includes(make)) {
             await getModels();
         } else {
-            make = 'Honda';
+            make = makes[0];
             await getModels();
         }
 	};
@@ -27,7 +27,7 @@
 		if (models.includes(model)) {
             updateLocalStorage();
         } else {
-            model = 'Accord';
+            model = models[0];
             updateLocalStorage();
         }
 	};
