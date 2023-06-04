@@ -12,7 +12,8 @@ export const GET = (async ({ fetch, params }) => {
 	const item = (await res.json()) as { menuItem: { text: string; value: string }[] };
 
 	const vehicleId = item.menuItem[0]?.value;
-	if (!vehicleId) return json({ cityMpg: 'N/A', highwayMpg: 'N/A' });
+	if (!vehicleId)
+		return json({ cityMpg: 'Database incomplete', highwayMpg: 'Database incomplete' });
 	const mpgRes = await fetch(`https://www.fueleconomy.gov/ws/rest/vehicle/${vehicleId}`, {
 		headers: {
 			Accept: 'application/json',
