@@ -32,8 +32,8 @@
 		origin: google.maps.places.Autocomplete,
 		destination: google.maps.places.Autocomplete
 	) => {
-		const originPlace = origin?.getPlace();
-		const destinationPlace = destination?.getPlace();
+		const originPlace = origin.getPlace();
+		const destinationPlace = destination.getPlace();
 		if (!originPlace || !destinationPlace) return;
 
 		directionsService.route(
