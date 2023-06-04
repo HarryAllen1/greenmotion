@@ -3,6 +3,7 @@
 	import { get } from 'svelte/store';
 	import { map } from './map';
 	import { Button } from '$components/ui/button';
+	import { drivingData } from './data';
 
 	let directionsRenderer: google.maps.DirectionsRenderer;
 	let directionsService: google.maps.DirectionsService;
@@ -50,6 +51,12 @@
 			(res, status) => {
 				if (status === google.maps.DirectionsStatus.OK) {
 					directionsRenderer.setDirections(res);
+					if (currentlyShown === 'driving') {
+						$drivingData = {
+							distance: res?.routes[0].legs[0].distance?.value ?? 0,
+							time: res?.routes[0].legs[0].duration?.value ?? 0,
+						};
+					}
 				} else {
 					console.error(status);
 				}

@@ -20,8 +20,8 @@ dependencies:
     specifier: ^1.2.1
     version: 1.2.1
   greenmotion-wasm:
-    specifier: ^0.1.0
-    version: 0.1.0
+    specifier: ^0.2.0
+    version: 0.2.0
   lucide-svelte:
     specifier: ^0.233.0
     version: 0.233.0(svelte@3.59.1)
@@ -2018,8 +2018,8 @@ packages:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
     dev: true
 
-  /greenmotion-wasm@0.1.0:
-    resolution: {integrity: sha512-GsY8QFQVENE5MrN+PIFJ/yapbLIx1XhSbHLRqdGNVKWPpW3PzSf0XDnH4w7LaBmaMZEcs5p17hb4LNHYdSwjxA==}
+  /greenmotion-wasm@0.2.0:
+    resolution: {integrity: sha512-bZv0+yQvQHtI88630LK9ND2gQ54dMTzMPvndGs3FLRsw+7Rr/sqFauEaJAqRRgE+HPHdJoF0XGBSNzRL4pzf/w==}
     dev: false
 
   /has-flag@3.0.0:
