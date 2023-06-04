@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { calculatePedestrianCalories } from 'greenmotion-wasm';
+	import { onMount } from 'svelte';
 
 	let model = localStorage.getItem('model');
 	let year = localStorage.getItem('year');
