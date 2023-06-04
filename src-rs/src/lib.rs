@@ -26,3 +26,21 @@ pub fn metersToMiles(meters: f64) -> f64 {
 pub fn secondsToMinutes(seconds: f64) -> f64 {
     seconds / 60.
 }
+
+#[wasm_bindgen]
+#[allow(non_snake_case)]
+pub fn calculateEmissions(gallons: f64) -> f64 {
+    8.887 * gallons
+}
+
+#[wasm_bindgen]
+#[allow(non_snake_case)]
+pub fn calculateCarJoules(vehicle_distance: f64) -> f64 {
+    1200. * vehicle_distance * 4.184
+}
+
+#[wasm_bindgen]
+#[allow(non_snake_case)]
+pub fn calculateWastedJoules(car_joules: f64, pedestrian_calories: f64) -> f64 {
+    car_joules - pedestrian_calories * 4.184
+}
