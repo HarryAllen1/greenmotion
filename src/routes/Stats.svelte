@@ -55,6 +55,7 @@
 	const updatePedestrianStore = () =>
 		console.log(weightRange);
 		localStorage.setItem('weightRange', weightRange.toString());
+		console.log(localStorage.getItem('weightRange'));
 		walkingData.update((data) => {
 			data.weight = weightRange;
 			return data;
