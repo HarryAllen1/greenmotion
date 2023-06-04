@@ -28,6 +28,13 @@
         model = 'Accord';
         console.log(models)
     }
+
+    function updateLocalStorage() {
+        localStorage.setItem('year', year);
+        localStorage.setItem('make', make);
+        localStorage.setItem('model', model);
+    }
+
     onMount(() => {
         getMakes();
     });
@@ -45,7 +52,7 @@
 </select>
 <br/>
 <label for="model">Model:</label>
-<select id="model" bind:value={model}>
+<select id="model" bind:value={model} on:change={updateLocalStorage}>
     <option value="" disabled selected>Choose Model</option>
     {#each models as m}
         <option value={m}>{m}</option>
