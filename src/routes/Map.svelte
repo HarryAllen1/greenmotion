@@ -8,7 +8,7 @@
 	onMount(async () => {
 		const { GoogleMap } = await import('$lib/maps');
 		const m = new GoogleMap(mapEl, {
-			backgroundColor: 'var(--background',
+			backgroundColor: 'var(--background)',
 			fullscreenControl: false,
 			streetViewControl: false,
 
