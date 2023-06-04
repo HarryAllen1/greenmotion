@@ -7,6 +7,10 @@ interface Data {
 	time: number;
 }
 
+interface PedestrianData extends Data {
+	weight: number;
+}
+
 interface Car {
 	model: string;
 	year: number;
@@ -18,9 +22,10 @@ export const drivingData = writable<Data>({
 	time: 0,
 });
 
-export const pedestrianData = writable<Data>({
+export const pedestrianData = writable<PedestrianData>({
 	distance: 0,
 	time: 0,
+	weight: 2,
 });
 
 export const carData = writable<Car>({

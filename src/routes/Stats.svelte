@@ -19,22 +19,16 @@
 	let mpg = 0;
 	let biking = true;
 	let weightRange = 2;
-
-	//miles
-	let vehicleDistance = 0;
-	//minutes
-	let vehicleTime = 0;
-
-	let pedestrianDistance = 0;
-	let pedestrianTime = 0;
-
-	let pedestrianCalories = 0;
-
-	let gallons = 0;
-	let emissions = 0;
-	let carJoules = 0;
-	let wastedJoules = 0;
-
+	$: vehicleDistance = metersToMiles($drivingData.distance);
+	$: vehicleTime = secondsToMinutes($drivingData.time);
+	$: pedestrianDistance = metersToMiles($pedestrianData.distance);
+	$: pedestrianTime = secondsToMinutes($pedestrianData.time);
+	$: pedestrianCalories = calculatePedestrianCalories(biking, weightRange);
+	$: gallons = calculateGallons(vehicleDistance, mpg);
+	$: emissions = calculateEmissions(gallons);
+	$: carJoules = calculateCarJoules(vehicleDistance, mpg);
+	$: wastedJoules = calculateWastedJoules(carJoules, pedestrianCalories);
+	$: weightRange = $pedestrianData.weight;
 	onMount(() => {
 		if (model && year && make) {
 			void fetch(`/carMPG/${year}-${make}-${model}`)
@@ -42,18 +36,17 @@
 				// eslint-disable-next-line unicorn/prefer-top-level-await
 				.then((data) => {
 					mpg = data.cityMpg;
-					vehicleDistance = metersToMiles($drivingData.distance);
-					vehicleTime = secondsToMinutes($drivingData.time);
-					pedestrianDistance = metersToMiles($pedestrianData.distance);
-					pedestrianTime = secondsToMinutes($pedestrianData.time);
-					pedestrianCalories = calculatePedestrianCalories(biking, weightRange);
-					gallons = calculateGallons(vehicleDistance, mpg);
-					emissions = calculateEmissions(gallons);
-					carJoules = calculateCarJoules(vehicleDistance, mpg);
-					wastedJoules = calculateWastedJoules(carJoules, pedestrianCalories);
 				});
 		}
 	});
+
+	function updatePedestrianStore() {
+		$pedestrianData = {
+			distance: pedestrianDistance,
+			time: pedestrianTime,
+			weight: weightRange,
+		};
+	}
 </script>
 
 {#if !model || !year || !make}
@@ -62,7 +55,7 @@
 	<h1>Statistics</h1>
 	<div>
 		<label for="weight">Weight Range:</label>
-		<select bind:value={weightRange}>
+		<select bind:value={weightRange} on:change={updatePedestrianStore}>
 			<option value="0">100-120</option>
 			<option value="1">121-140</option>
 			<option value="2" selected={true}>141-160</option>

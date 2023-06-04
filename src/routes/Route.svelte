@@ -3,7 +3,7 @@
 	import { get } from 'svelte/store';
 	import { map } from './map';
 	import { Button } from '$components/ui/button';
-	import { drivingData } from './data';
+	import { drivingData, pedestrianData } from './data';
 
 	let directionsRenderer: google.maps.DirectionsRenderer;
 	let directionsService: google.maps.DirectionsService;
@@ -55,6 +55,13 @@
 						$drivingData = {
 							distance: res?.routes[0].legs[0].distance?.value ?? 0,
 							time: res?.routes[0].legs[0].duration?.value ?? 0,
+						};
+					}
+					if (currentlyShown === 'walking') {
+						$pedestrianData = {
+							distance: res?.routes[0].legs[0].distance?.value ?? 0,
+							time: res?.routes[0].legs[0].duration?.value ?? 0,
+							weight: $pedestrianData.weight,
 						};
 					}
 				} else {
