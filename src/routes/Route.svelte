@@ -9,34 +9,44 @@
 	let endEl: HTMLInputElement;
 
 	onMount(async () => {
-		const directionsService = new google.maps.DirectionsService();
 		const directionsRenderer = new google.maps.DirectionsRenderer();
 		directionsRenderer.setMap(get(map));
 		const origin = new google.maps.places.Autocomplete(startEl, {});
 		const destination = new google.maps.places.Autocomplete(endEl, {});
-		origin.addListener('place_changed', () =>
-			route(origin, destination, directionsService, directionsRenderer)
-		);
-		destination.addListener('place_changed', () =>
-			route(origin, destination, directionsService, directionsRenderer)
-		);
+		origin.addListener('place_changed', () => route(origin, destination, directionsRenderer));
+		destination.addListener('place_changed', () => route(origin, destination, directionsRenderer));
 	});
 
 	const route = (
 		origin: google.maps.places.Autocomplete,
 		destination: google.maps.places.Autocomplete,
-		directionsService: google.maps.DirectionsService,
 		directionsRenderer: google.maps.DirectionsRenderer
 	) => {
+		const drivingDirectionsService = new google.maps.DirectionsService();
+		const walkingDirectionsService = new google.maps.DirectionsService();
 		const originPlace = origin.getPlace();
 		const destinationPlace = destination.getPlace();
 		if (!originPlace || !destinationPlace) return;
 
-		directionsService.route(
+		drivingDirectionsService.route(
 			{
 				origin: originPlace.formatted_address ?? '',
 				destination: destinationPlace.formatted_address ?? '',
 				travelMode: google.maps.TravelMode.DRIVING,
+			},
+			(res, status) => {
+				if (status === google.maps.DirectionsStatus.OK) {
+					directionsRenderer.setDirections(res);
+				} else {
+					console.error(status);
+				}
+			}
+		);
+		walkingDirectionsService.route(
+			{
+				origin: originPlace.formatted_address ?? '',
+				destination: destinationPlace.formatted_address ?? '',
+				travelMode: google.maps.TravelMode.WALKING,
 			},
 			(res, status) => {
 				if (status === google.maps.DirectionsStatus.OK) {
