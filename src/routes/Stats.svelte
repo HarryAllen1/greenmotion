@@ -12,8 +12,8 @@
 		fetch(`/carMPG/${year}-${make}-${model}`)
 			.then((res) => res.json())
 			.then((data) => {
-                console.log(data)
-                console.log(data.cityMpg)
+				console.log(data);
+				console.log(data.cityMpg);
 				mpg = data.cityMpg;
 			});
 	}
