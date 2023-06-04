@@ -68,6 +68,8 @@
 
 {#if !model || !year || !make}
 	<h2 class="text-center">Choose a car first</h2>
+{:else if vehicleDistance === 0}
+	<h2 class="text-center">Choose a route first</h2>
 {:else}
 	<h2 class="text-center">Statistics</h2>
 	<div>
@@ -86,7 +88,12 @@
 			{/each}
 		</select>
 	</div>
-
+	<div>
+		<h2>Efficiency of {biking? 'Bike' : 'Foot'} over Car</h2>
+		<p>
+			{percentEfficient}% of the energy used by a car is wasted.
+		</p>
+	</div>
 	<Table>
 		<TableBody>
 			<TableRow>
@@ -136,10 +143,6 @@
 			<TableRow>
 				<TableCell>Energy Wasted by {biking ? 'Bike' : 'Foot'} (J)</TableCell>
 				<TableCell>{wastedJoules}</TableCell>
-			</TableRow>
-			<TableRow>
-				<TableCell>Efficiency of {biking ? 'Bike' : 'Foot'} (%)</TableCell>
-				<TableCell>{percentEfficient}</TableCell>
 			</TableRow>
 		</TableBody>
 	</Table>

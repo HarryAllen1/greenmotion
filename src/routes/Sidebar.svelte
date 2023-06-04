@@ -14,14 +14,15 @@
 		<Pane minSize={20} size={45}>
 			<Tabs value="route">
 				<TabsList class="grid w-full grid-cols-2">
-					<TabsTrigger value="route">Route</TabsTrigger>
+					
 					<TabsTrigger value="vehicle">Vehicle</TabsTrigger>
+					<TabsTrigger value="route">Route</TabsTrigger>
 				</TabsList>
-				<TabsContent value="route" class="p-4 pt-0">
-					<Route />
-				</TabsContent>
 				<TabsContent value="vehicle" class="p-4 pt-0">
 					<Vehicle />
+				</TabsContent>
+				<TabsContent value="route" class="p-4 pt-0">
+					<Route />
 				</TabsContent>
 			</Tabs>
 		</Pane>
