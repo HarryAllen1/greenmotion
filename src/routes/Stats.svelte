@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { calculatePedestrianCalories } from 'greenmotion-wasm';
 
 	let model = localStorage.getItem('model');
 	let year = localStorage.getItem('year');
@@ -25,9 +26,7 @@
 	let pedestrianDistance = Number(localStorage.getItem('pDistance')) ?? 0;
 	let pedestrianTime = Number(localStorage.getItem('pTime')) ?? 0;
 
-	let pedestrianCalories = biking
-		? (40 + 5 * weightRange + (60 + 10 * weightRange)) / 2
-		: 55 + weightRange * 5;
+	let pedestrianCalories = calculatePedestrianCalories(biking, weightRange);
 
 	let gallons = vehicleDistance / mpg;
 	let emissions = 8.887 * gallons;
@@ -42,9 +41,7 @@
 		vehicleTime = Number(localStorage.getItem('time')) ?? 0;
 		pedestrianDistance = Number(localStorage.getItem('pDistance')) ?? 0;
 		pedestrianTime = Number(localStorage.getItem('pTime')) ?? 0;
-		pedestrianCalories = biking
-			? (40 + 5 * weightRange + (60 + 10 * weightRange)) / 2
-			: 55 + weightRange * 5;
+		pedestrianCalories = calculatePedestrianCalories(biking, weightRange);
 		gallons = vehicleDistance / mpg;
 		emissions = 8.887 * gallons;
 		carJoules = 1200 * vehicleDistance * 4.184;

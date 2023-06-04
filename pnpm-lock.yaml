@@ -19,6 +19,9 @@ dependencies:
   clsx:
     specifier: ^1.2.1
     version: 1.2.1
+  greenmotion-wasm:
+    specifier: ^0.1.0
+    version: 0.1.0
   lucide-svelte:
     specifier: ^0.233.0
     version: 0.233.0(svelte@3.59.1)
@@ -111,6 +114,9 @@ devDependencies:
   vite-imagetools:
     specifier: ^5.0.4
     version: 5.0.4(rollup@2.79.1)
+  vite-plugin-wasm:
+    specifier: ^3.2.2
+    version: 3.2.2(vite@4.3.9)
   vitest:
     specifier: ^0.31.4
     version: 0.31.4(@vitest/browser@0.31.4)(playwright@1.34.3)
@@ -2012,6 +2018,10 @@ packages:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
     dev: true
 
+  /greenmotion-wasm@0.1.0:
+    resolution: {integrity: sha512-GsY8QFQVENE5MrN+PIFJ/yapbLIx1XhSbHLRqdGNVKWPpW3PzSf0XDnH4w7LaBmaMZEcs5p17hb4LNHYdSwjxA==}
+    dev: false
+
   /has-flag@3.0.0:
     resolution: {integrity: sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw==}
     engines: {node: '>=4'}
@@ -3567,6 +3577,14 @@ packages:
       - sugarss
       - supports-color
       - terser
+    dev: true
+
+  /vite-plugin-wasm@3.2.2(vite@4.3.9):
+    resolution: {integrity: sha512-cdbBUNR850AEoMd5nvLmnyeq63CSfoP1ctD/L2vLk/5+wsgAPlAVAzUK5nGKWO/jtehNlrSSHLteN+gFQw7VOA==}
+    peerDependencies:
+      vite: ^2 || ^3 || ^4
+    dependencies:
+      vite: 4.3.9(@types/node@20.2.5)
     dev: true
 
   /vite@4.3.9(@types/node@20.2.5):
