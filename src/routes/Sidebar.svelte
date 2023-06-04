@@ -17,10 +17,10 @@
 					<TabsTrigger value="vehicle">Vehicle</TabsTrigger>
 					<TabsTrigger value="route">Route</TabsTrigger>
 				</TabsList>
-				<TabsContent value="vehicle">
+				<TabsContent value="vehicle" class="p-4">
 					<Vehicle />
 				</TabsContent>
-				<TabsContent value="route">
+				<TabsContent value="route" class="p-4">
 					<Route />
 				</TabsContent>
 			</Tabs>

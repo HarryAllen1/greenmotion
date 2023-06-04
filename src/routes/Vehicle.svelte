@@ -49,14 +49,24 @@
 	<label for="year">Year:</label>
 	<Input type="number" id="year" min={1984} max={2024} on:change={getMakes} bind:value={year} />
 	<label for="make">Make:</label>
-	<select id="make" bind:value={make} on:change={getModels}>
+	<select
+		class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+		id="make"
+		bind:value={make}
+		on:change={getModels}
+	>
 		<option value="" disabled selected>Choose Make</option>
 		{#each makes as m}
 			<option value={m}>{m}</option>
 		{/each}
 	</select>
 	<label for="model">Model:</label>
-	<select id="model" bind:value={model} on:change={updateLocalStorage}>
+	<select
+		class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+		id="model"
+		bind:value={model}
+		on:change={updateLocalStorage}
+	>
 		<option value="" disabled selected>Choose Model</option>
 		{#each models as m}
 			<option value={m}>{m}</option>
