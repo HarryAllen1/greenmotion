@@ -26,6 +26,5 @@ export const GET = (async ({ fetch, params }) => {
 		cityMpg: cityMpg || 'N/A',
 		highwayMpg: highwayMpg || 'N/A',
 	};
-
 	return json(response);
 }) satisfies RequestHandler;

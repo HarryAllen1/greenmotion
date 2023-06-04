@@ -12,26 +12,28 @@
 		fetch(`/carMPG/${year}-${make}-${model}`)
 			.then((res) => res.json())
 			.then((data) => {
-				mpg = data.mpg;
+                console.log(data)
+                console.log(data.cityMpg)
+				mpg = data.cityMpg;
 			});
 	}
 	let biking = true;
 	let weightRange = 2;
 
 	//miles
-	let vehicleDistance = Number(localStorage.getItem('distance')) ?? 0;
+	let vehicleDistance = 0;
 	//minutes
-	let vehicleTime = Number(localStorage.getItem('time')) ?? 0;
+	let vehicleTime = 0;
 
-	let pedestrianDistance = Number(localStorage.getItem('pDistance')) ?? 0;
-	let pedestrianTime = Number(localStorage.getItem('pTime')) ?? 0;
+	let pedestrianDistance = 0;
+	let pedestrianTime = 0;
 
-	let pedestrianCalories = calculatePedestrianCalories(biking, weightRange);
+	let pedestrianCalories = 0;
 
-	let gallons = vehicleDistance / mpg;
-	let emissions = 8.887 * gallons;
-	let carJoules = 1200 * vehicleDistance * 4.184;
-	let wastedJoules = carJoules - pedestrianCalories * 4.184;
+	let gallons = 0;
+	let emissions = 0;
+	let carJoules = 0;
+	let wastedJoules = 0;
 
 	onMount(() => {
 		if (!model || !year || !make) {
