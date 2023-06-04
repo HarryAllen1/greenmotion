@@ -40,13 +40,11 @@
 		}
 	});
 
-	function updatePedestrianStore() {
-		console.log(weightRange);
+	const updatePedestrianStore = () =>
 		walkingData.update((data) => {
 			data.weight = weightRange;
 			return data;
 		});
-	}
 </script>
 
 {#if !model || !year || !make}
