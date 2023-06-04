@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { calculatePedestrianCalories } from 'greenmotion-wasm';
+	import { calculatePedestrianCalories, metersToMiles, secondsToMinutes, calculateEmissions,
+		 calculateCarJoules, calculateWastedJoules,  } from 'greenmotion-wasm';
 	import { onMount } from 'svelte';
 
 	let model = localStorage.getItem('model');
