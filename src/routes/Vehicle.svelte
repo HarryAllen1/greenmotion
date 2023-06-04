@@ -13,11 +13,11 @@
 		const json = await res.json();
 		makes = json;
 		if (makes.includes(make)) {
-            await getModels();
-        } else {
-            make = makes[0];
-            await getModels();
-        }
+			await getModels();
+		} else {
+			make = makes[0];
+			await getModels();
+		}
 	};
 
 	const getModels = async () => {
@@ -25,11 +25,11 @@
 		const json = await res.json();
 		models = json;
 		if (models.includes(model)) {
-            updateLocalStorage();
-        } else {
-            model = models[0];
-            updateLocalStorage();
-        }
+			updateLocalStorage();
+		} else {
+			model = models[0];
+			updateLocalStorage();
+		}
 	};
 
 	const updateLocalStorage = () => {

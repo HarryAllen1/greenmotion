@@ -1,19 +1,19 @@
 <script lang="ts">
-	import { onMount } from "svelte";
+	import { onMount } from 'svelte';
 
-    let model = localStorage.getItem('model');
-    let year = localStorage.getItem('year');
-    let make = localStorage.getItem('make');
-    console.log(model, year, make)
+	let model = localStorage.getItem('model');
+	let year = localStorage.getItem('year');
+	let make = localStorage.getItem('make');
+	console.log(model, year, make);
 
-    let mpg = 0;
-    if (model && year && make){
-        fetch(`/carMPG/${year}-${make}-${model}`)
-            .then((res) => res.json())
-            .then((data) => {
-                mpg = data.mpg;
-            });
-    }
+	let mpg = 0;
+	if (model && year && make) {
+		fetch(`/carMPG/${year}-${make}-${model}`)
+			.then((res) => res.json())
+			.then((data) => {
+				mpg = data.mpg;
+			});
+	}
 	let biking = true;
 	let weightRange = 2;
 
@@ -32,25 +32,28 @@
 	let gallons = vehicleDistance / mpg;
 	let emissions = 8.887 * gallons;
 	let carJoules = 1200 * vehicleDistance * 4.184;
-    let wastedJoules = carJoules - pedestrianCalories * 4.184;
+	let wastedJoules = carJoules - pedestrianCalories * 4.184;
 
-    onMount(() => {
-        if (!model || !year || !make) {
-            return;
-        }
-        vehicleDistance = Number(localStorage.getItem('distance')) || 0;
-        vehicleTime = Number(localStorage.getItem('time')) || 0;
-        pedestrianDistance = Number(localStorage.getItem('pDistance')) || 0;
-        pedestrianTime = Number(localStorage.getItem('pTime')) || 0;
-        pedestrianCalories = biking ? (40 + 5 * weightRange + (60 + 10 * weightRange)) / 2 : 55 + weightRange * 5;
-        gallons = vehicleDistance / mpg;
-        emissions = 8.887 * gallons;
-        carJoules = 1200 * vehicleDistance * 4.184;
-        wastedJoules = carJoules - pedestrianCalories * 4.184;
-    });
+	onMount(() => {
+		if (!model || !year || !make) {
+			return;
+		}
+		vehicleDistance = Number(localStorage.getItem('distance')) || 0;
+		vehicleTime = Number(localStorage.getItem('time')) || 0;
+		pedestrianDistance = Number(localStorage.getItem('pDistance')) || 0;
+		pedestrianTime = Number(localStorage.getItem('pTime')) || 0;
+		pedestrianCalories = biking
+			? (40 + 5 * weightRange + (60 + 10 * weightRange)) / 2
+			: 55 + weightRange * 5;
+		gallons = vehicleDistance / mpg;
+		emissions = 8.887 * gallons;
+		carJoules = 1200 * vehicleDistance * 4.184;
+		wastedJoules = carJoules - pedestrianCalories * 4.184;
+	});
 </script>
+
 {#if !model || !year || !make}
-    <h1>Choose a car first</h1>
+	<h1>Choose a car first</h1>
 {:else}
 	<h1>Statistics</h1>
 	<div>
