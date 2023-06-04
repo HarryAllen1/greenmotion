@@ -6,7 +6,7 @@ if (!browser) throw new Error("This file can't be imported on the server");
 
 await new Loader({
 	apiKey: PUBLIC_GOOGLE_MAPS_API_KEY,
-	version: 'weekly',
+	version: 'beta',
 	libraries: ['places'],
 }).load();
 
