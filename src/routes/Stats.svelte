@@ -22,12 +22,12 @@
 	$: vehicleTime = secondsToMinutes($drivingData.time);
 	$: pedestrianDistance = metersToMiles(biking ? $bikingData.distance : $walkingData.distance);
 	$: pedestrianTime = secondsToMinutes(biking ? $bikingData.time : $walkingData.time);
-	$: pedestrianCalories = calculatePedestrianCalories(biking, weightRange);
+	$: pedestrianCalories = calculatePedestrianCalories(biking, weightRange) * pedestrianDistance;
 	$: gallons = calculateGallons(vehicleDistance, mpg);
 	$: emissions = calculateEmissions(gallons);
 	$: carJoules = calculateCarJoules(vehicleDistance, mpg);
 	$: wastedJoules = calculateWastedJoules(carJoules, pedestrianCalories);
-	$: weightRange = biking ? $bikingData.weight : $walkingData.weight;
+	weightRange = $walkingData.weight;
 
 	onMount(() => {
 		if (model && year && make) {
@@ -41,7 +41,11 @@
 	});
 
 	function updatePedestrianStore() {
-		biking ? ($bikingData.weight = weightRange) : ($walkingData.weight = weightRange);
+		console.log(weightRange);
+		walkingData.update((data) => {
+			data.weight = weightRange;
+			return data;
+		});
 	}
 </script>
 
@@ -54,7 +58,7 @@
 		<select bind:value={weightRange} on:change={updatePedestrianStore}>
 			<option value="0">100-120</option>
 			<option value="1">121-140</option>
-			<option value="2" selected={true}>141-160</option>
+			<option value="2" selected>141-160</option>
 			<option value="3">161-180</option>
 			<option value="4">181-200</option>
 			<option value="5">201-220</option>
