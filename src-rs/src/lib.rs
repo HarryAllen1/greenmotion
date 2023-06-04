@@ -36,7 +36,7 @@ pub fn calculateEmissions(gallons: f64) -> f64 {
 #[wasm_bindgen]
 #[allow(non_snake_case)]
 pub fn calculateCarJoules(vehicle_distance: f64, mpg: f64) -> f64 {
-    (13,379,151.36 / mpg) * vehicle_distance / 0.621371
+    (13,379,151.36 / mpg) * vehicle_distance/ 0.621371
 }
 
 #[wasm_bindgen]
