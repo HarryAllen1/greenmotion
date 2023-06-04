@@ -50,12 +50,16 @@
 </script>
 
 {#if !model || !year || !make}
-	<h1>Choose a car first</h1>
+	<h2 class="text-center">Choose a car first</h2>
 {:else}
-	<h1>Statistics</h1>
+	<h2 class="text-center">Statistics</h2>
 	<div>
 		<label for="weight">Weight Range:</label>
-		<select bind:value={weightRange} on:change={updatePedestrianStore}>
+		<select
+			class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+			bind:value={weightRange}
+			on:change={updatePedestrianStore}
+		>
 			<option value="0">100-120</option>
 			<option value="1">121-140</option>
 			<option value="2" selected>141-160</option>
