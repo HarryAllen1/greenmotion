@@ -2,11 +2,14 @@
 	import { onMount } from 'svelte';
 	import { get } from 'svelte/store';
 	import { map } from './map';
+	import { Button } from '$components/ui/button';
 
 	let startLocation = '';
 	let startEl: HTMLInputElement;
 	let endLocation = '';
 	let endEl: HTMLInputElement;
+
+	let currentlyShown: 'driving' | 'walking' = 'driving';
 
 	onMount(async () => {
 		const directionsRenderer = new google.maps.DirectionsRenderer();
@@ -73,4 +76,11 @@
 		bind:value={endLocation}
 		placeholder="End location"
 	/>
+	<Button
+		variant="secondary"
+		on:click={() =>
+			currentlyShown === 'driving' ? (currentlyShown = 'walking') : (currentlyShown = 'driving')}
+	>
+		{currentlyShown === 'driving' ? 'Show walking directions' : 'Show driving directions'}
+	</Button>
 </div>
