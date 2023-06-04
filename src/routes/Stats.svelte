@@ -28,6 +28,17 @@
 	$: carJoules = calculateCarJoules(vehicleDistance, mpg);
 	$: wastedJoules = calculateWastedJoules(carJoules, pedestrianCalories);
 	weightRange = Number(localStorage.getItem('weightRange')) || 2;
+	const weights = [
+		"100 - 120",
+		"121 - 140",
+		"141 - 160",
+		"161 - 180",
+		"181 - 200",
+		"201 - 220",
+		"221 - 240",
+		"241 - 260",
+	]
+
 	console.log(weightRange);
 
 	onMount(() => {
@@ -41,14 +52,13 @@
 		}
 	});
 
-	function updatePedestrianStore() {
+	const updatePedestrianStore = () =>
 		console.log(weightRange);
 		localStorage.setItem('weightRange', weightRange.toString());
 		walkingData.update((data) => {
 			data.weight = weightRange;
 			return data;
 		});
-	}
 </script>
 
 {#if !model || !year || !make}
@@ -62,14 +72,13 @@
 			bind:value={weightRange}
 			on:change={updatePedestrianStore}
 		>
-			<option value="0">100-120</option>
-			<option value="1">121-140</option>
-			<option value="2">141-160</option>
-			<option value="3">161-180</option>
-			<option value="4">181-200</option>
-			<option value="5">201-220</option>
-			<option value="6">221-240</option>
-			<option value="7">241-260</option>
+			{#each [2, 3, 4, 5, 6, 7] as weight}
+				{#if weight === weightRange}
+					<option value={weight} selected>{weights[weight]}</option>
+				{:else}
+					<option value={weight}>{weights[weight]}</option>
+				{/if}
+			{/each}
 		</select>
 	</div>
 
