@@ -1,5 +1,5 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 import { imagetools } from 'vite-imagetools';
 import { extname } from 'node:path';
 
@@ -39,4 +39,13 @@ export default defineConfig({
 		}),
 		sveltekit(),
 	],
+	test: {
+		browser: {
+			name: 'chromium',
+			provider: 'playwright',
+			headless: true,
+			enabled: true,
+		},
+		include: ['src/**/*.{test,spec}.{js,ts}', 'tests/**/*.{test,spec}.{js,ts}'],
+	},
 });

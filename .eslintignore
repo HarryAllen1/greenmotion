@@ -17,3 +17,6 @@ tailwind.config.ts
 svelte.config.js
 vite.config.ts
 postcss.config.js
+
+/.vercel
+/src/lib/components/ui
