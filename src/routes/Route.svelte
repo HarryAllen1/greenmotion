@@ -40,7 +40,10 @@
 			{
 				origin: originPlace.formatted_address ?? '',
 				destination: destinationPlace.formatted_address ?? '',
-				travelMode: google.maps.TravelMode.DRIVING,
+				travelMode:
+					currentlyShown === 'driving'
+						? google.maps.TravelMode.DRIVING
+						: google.maps.TravelMode.WALKING,
 			},
 			(res, status) => {
 				if (status === google.maps.DirectionsStatus.OK) {
