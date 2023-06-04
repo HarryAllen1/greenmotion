@@ -36,7 +36,7 @@
 
 <h2>Choose Car:</h2>
 <label for="year">Year:</label>
-<input type="number" id="year" min="1984" max="2024" on:change={getMakes} bind:value={year} />
+<input type="number" id="year" min={1984} max={2024} on:change={getMakes} bind:value={year} />
 <br />
 <label for="make">Make:</label>
 <select id="make" bind:value={make} on:change={getModels}>
