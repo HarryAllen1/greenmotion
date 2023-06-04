@@ -18,12 +18,12 @@
 	let weightRange = 2;
 
 	//miles
-	let vehicleDistance = Number(localStorage.getItem('distance')) || 0;
+	let vehicleDistance = Number(localStorage.getItem('distance')) ?? 0;
 	//minutes
-	let vehicleTime = Number(localStorage.getItem('time')) || 0;
+	let vehicleTime = Number(localStorage.getItem('time')) ?? 0;
 
-	let pedestrianDistance = Number(localStorage.getItem('pDistance')) || 0;
-	let pedestrianTime = Number(localStorage.getItem('pTime')) || 0;
+	let pedestrianDistance = Number(localStorage.getItem('pDistance')) ?? 0;
+	let pedestrianTime = Number(localStorage.getItem('pTime')) ?? 0;
 
 	let pedestrianCalories = biking
 		? (40 + 5 * weightRange + (60 + 10 * weightRange)) / 2
@@ -38,10 +38,10 @@
 		if (!model || !year || !make) {
 			return;
 		}
-		vehicleDistance = Number(localStorage.getItem('distance')) || 0;
-		vehicleTime = Number(localStorage.getItem('time')) || 0;
-		pedestrianDistance = Number(localStorage.getItem('pDistance')) || 0;
-		pedestrianTime = Number(localStorage.getItem('pTime')) || 0;
+		vehicleDistance = Number(localStorage.getItem('distance')) ?? 0;
+		vehicleTime = Number(localStorage.getItem('time')) ?? 0;
+		pedestrianDistance = Number(localStorage.getItem('pDistance')) ?? 0;
+		pedestrianTime = Number(localStorage.getItem('pTime')) ?? 0;
 		pedestrianCalories = biking
 			? (40 + 5 * weightRange + (60 + 10 * weightRange)) / 2
 			: 55 + weightRange * 5;

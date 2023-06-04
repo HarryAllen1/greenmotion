@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { Input } from '$components/ui/input';
 
 	let year = localStorage.getItem('year') ?? '2021';
 	let make = localStorage.getItem('make') ?? 'Honda';
@@ -46,7 +47,7 @@
 <div class="flex flex-col">
 	<h2 class="text-center">Choose Car</h2>
 	<label for="year">Year:</label>
-	<input type="number" id="year" min={1984} max={2024} on:change={getMakes} bind:value={year} />
+	<Input type="number" id="year" min={1984} max={2024} on:change={getMakes} bind:value={year} />
 	<label for="make">Make:</label>
 	<select id="make" bind:value={make} on:change={getModels}>
 		<option value="" disabled selected>Choose Make</option>
