@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	let year = localStorage.getItem('year') || '2021';
-	let make = localStorage.getItem('make') || 'Honda';
-	let model = localStorage.getItem('model') || 'Accord';
+	let year = localStorage.getItem('year') ?? '2021';
+	let make = localStorage.getItem('make') ?? 'Honda';
+	let model = localStorage.getItem('model') ?? 'Accord';
 
 	let makes: string[] = [];
 	let models: string[] = [];
