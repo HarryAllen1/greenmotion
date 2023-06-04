@@ -1,7 +1,8 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vitest/config';
-import { imagetools } from 'vite-imagetools';
 import { extname } from 'node:path';
+import { imagetools } from 'vite-imagetools';
+import wasm from 'vite-plugin-wasm';
+import { defineConfig } from 'vitest/config';
 
 const fallback: Record<string, string> = {
 	'.heic': 'jpg',
@@ -20,6 +21,7 @@ export default defineConfig({
 		target: 'es2022',
 	},
 	plugins: [
+		wasm(),
 		imagetools({
 			defaultDirectives: (url) => {
 				const ext = extname(url.pathname);

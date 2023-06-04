@@ -20,3 +20,4 @@ postcss.config.js
 
 /.vercel
 /src/lib/components/ui
+/src-rs
