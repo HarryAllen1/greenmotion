@@ -7,14 +7,6 @@
 	let make = localStorage.getItem('make');
 
 	let mpg = 0;
-	if (model && year && make) {
-		void fetch(`/carMPG/${year}-${make}-${model}`)
-			.then((res) => res.json() as Promise<Record<string, number>>)
-			// eslint-disable-next-line unicorn/prefer-top-level-await
-			.then((data) => {
-				mpg = data.cityMpg;
-			});
-	}
 	let biking = true;
 	let weightRange = 2;
 
@@ -34,15 +26,24 @@
 	let wastedJoules = 0;
 
 	onMount(() => {
-		vehicleDistance = Number(localStorage.getItem('distance') ?? '4');
-		vehicleTime = Number(localStorage.getItem('time') ?? '14');
-		pedestrianDistance = Number(localStorage.getItem('pDistance') ?? '4.1');
-		pedestrianTime = Number(localStorage.getItem('pTime') ?? '13');
-		pedestrianCalories = calculatePedestrianCalories(biking, weightRange);
-		gallons = vehicleDistance / mpg;
-		emissions = 8.887 * gallons;
-		carJoules = 1200 * vehicleDistance * 4.184;
-		wastedJoules = carJoules - pedestrianCalories * 4.184;
+		
+		if (model && year && make) {
+			void fetch(`/carMPG/${year}-${make}-${model}`)
+				.then((res) => res.json() as Promise<Record<string, number>>)
+				// eslint-disable-next-line unicorn/prefer-top-level-await
+				.then((data) => {
+					mpg = data.cityMpg;		
+					vehicleDistance = Number(localStorage.getItem('distance') ?? '4');
+					vehicleTime = Number(localStorage.getItem('time') ?? '14');
+					pedestrianDistance = Number(localStorage.getItem('pDistance') ?? '4.1');
+					pedestrianTime = Number(localStorage.getItem('pTime') ?? '13');
+					pedestrianCalories = calculatePedestrianCalories(biking, weightRange);
+					gallons = vehicleDistance / mpg;
+					emissions = 8.887 * gallons;
+					carJoules = 1200 * vehicleDistance * 4.184;
+					wastedJoules = carJoules - pedestrianCalories * 4.184;
+				});
+		}
 	});
 </script>
 
@@ -73,14 +74,14 @@
 	</div>
 
 	<div>
-		<label for="vehicleDistance">Distance by Car (km): {vehicleDistance}</label>
+		<label for="vehicleDistance">Distance by Car (miles): {vehicleDistance}</label>
 	</div>
 	<div>
 		<label for="vehicleTime">Time by Car (min): {vehicleTime}</label>
 	</div>
 	<div>
 		<label for="pedestrianDistance"
-			>Distance by {biking ? 'Bike' : 'Foot'} (km): {pedestrianDistance}</label
+			>Distance by {biking ? 'Bike' : 'Foot'} (miles): {pedestrianDistance}</label
 		>
 	</div>
 	<div>
