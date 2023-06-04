@@ -29,6 +29,7 @@
 	$: emissions = calculateEmissions(gallons);
 	$: carJoules = calculateCarJoules(vehicleDistance, mpg);
 	$: wastedJoules = calculateWastedJoules(carJoules, pedestrianCalories);
+	$: percentEfficient = (wastedJoules / carJoules) * 100;
 	weightRange = Number(localStorage.getItem('weightRange')) || 2;
 	const weights = [
 		'100 - 120',
@@ -135,6 +136,10 @@
 			<TableRow>
 				<TableCell>Energy Wasted by {biking ? 'Bike' : 'Foot'} (J)</TableCell>
 				<TableCell>{wastedJoules}</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell>Efficiency of {biking ? 'Bike' : 'Foot'} (%)</TableCell>
+				<TableCell>{percentEfficient}</TableCell>
 			</TableRow>
 		</TableBody>
 	</Table>
