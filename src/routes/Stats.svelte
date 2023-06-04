@@ -27,7 +27,8 @@
 	$: emissions = calculateEmissions(gallons);
 	$: carJoules = calculateCarJoules(vehicleDistance, mpg);
 	$: wastedJoules = calculateWastedJoules(carJoules, pedestrianCalories);
-	weightRange = $walkingData.weight;
+	weightRange = Number(localStorage.getItem('weightRange')) || 2;
+	console.log(weightRange);
 
 	onMount(() => {
 		if (model && year && make) {
@@ -42,6 +43,7 @@
 
 	function updatePedestrianStore() {
 		console.log(weightRange);
+		localStorage.setItem('weightRange', weightRange.toString());
 		walkingData.update((data) => {
 			data.weight = weightRange;
 			return data;
@@ -62,7 +64,7 @@
 		>
 			<option value="0">100-120</option>
 			<option value="1">121-140</option>
-			<option value="2" selected>141-160</option>
+			<option value="2">141-160</option>
 			<option value="3">161-180</option>
 			<option value="4">181-200</option>
 			<option value="5">201-220</option>
@@ -72,7 +74,8 @@
 	</div>
 
 	<div>
-		<label for="biking">Biking: {biking ? 'Yes' : 'No'}</label>
+		<label for="biking">Biking: </label>
+		<input type="checkbox" bind:checked={biking} />
 	</div>
 
 	<div>
