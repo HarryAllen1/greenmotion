@@ -45,7 +45,7 @@
 </script>
 
 <div class="flex flex-col">
-	<h2 class="text-center">Choose Car</h2>
+	<h2 class="text-center">Input Car Details</h2>
 	<label for="year">Year:</label>
 	<Input type="number" id="year" min={1984} max={2024} on:change={getMakes} bind:value={year} />
 	<label for="make">Make:</label>
