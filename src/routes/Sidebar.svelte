@@ -9,7 +9,7 @@
 	import Stats from './Stats.svelte';
 </script>
 
-<div>
+<div class="h-[100vh]">
 	<Splitpanes horizontal dblClickSplitter={false}>
 		<Pane minSize={20} size={45}>
 			<Tabs value="vehicle">
@@ -25,7 +25,7 @@
 				</TabsContent>
 			</Tabs>
 		</Pane>
-		<Pane minSize={40} class="p-4 pt-0">
+		<Pane minSize={40} class="p-4 pt-0 h-full overflow-y-scroll">
 			<Stats />
 		</Pane>
 	</Splitpanes>

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { Checkbox } from '$components/ui/checkbox';
+	import { Table, TableBody, TableCell, TableRow } from '$components/ui/table';
 	import {
 		calculateCarJoules,
 		calculateEmissions,
@@ -29,15 +31,15 @@
 	$: wastedJoules = calculateWastedJoules(carJoules, pedestrianCalories);
 	weightRange = Number(localStorage.getItem('weightRange')) || 2;
 	const weights = [
-		"100 - 120",
-		"121 - 140",
-		"141 - 160",
-		"161 - 180",
-		"181 - 200",
-		"201 - 220",
-		"221 - 240",
-		"241 - 260",
-	]
+		'100 - 120',
+		'121 - 140',
+		'141 - 160',
+		'161 - 180',
+		'181 - 200',
+		'201 - 220',
+		'221 - 240',
+		'241 - 260',
+	];
 
 	console.log(weightRange);
 
@@ -52,13 +54,12 @@
 		}
 	});
 
-	const updatePedestrianStore = () =>
-		console.log(weightRange);
-		localStorage.setItem('weightRange', weightRange.toString());
-		walkingData.update((data) => {
-			data.weight = weightRange;
-			return data;
-		});
+	const updatePedestrianStore = () => console.log(weightRange);
+	localStorage.setItem('weightRange', weightRange.toString());
+	walkingData.update((data) => {
+		data.weight = weightRange;
+		return data;
+	});
 </script>
 
 {#if !model || !year || !make}
@@ -82,44 +83,56 @@
 		</select>
 	</div>
 
-	<div>
-		<label for="biking">Biking: </label>
-		<input type="checkbox" bind:checked={biking} />
-	</div>
-
-	<div>
-		<label for="vehicleMpg">Vehicle MPG: {mpg}</label>
-	</div>
-
-	<div>
-		<label for="vehicleDistance">Distance by Car (miles): {vehicleDistance}</label>
-	</div>
-	<div>
-		<label for="vehicleTime">Time by Car (min): {vehicleTime}</label>
-	</div>
-	<div>
-		<label for="pedestrianDistance"
-			>Distance by {biking ? 'Bike' : 'Foot'} (miles): {pedestrianDistance}</label
-		>
-	</div>
-	<div>
-		<label for="pedestrianTime">Time by {biking ? 'Bike' : 'Foot'} (min): {pedestrianTime}</label>
-	</div>
-	<div>
-		<label for="pedestrianCalories">
-			Calories Burned by {biking ? 'Bike' : 'Foot'} (min): {pedestrianCalories}
-		</label>
-	</div>
-	<div>
-		<label for="gallons">Gallons of Gas: {gallons}</label>
-	</div>
-	<div>
-		<label for="emissions">Emissions (grams): {emissions}</label>
-	</div>
-	<div>
-		<label for="carCalories">Energy Burned by Car (joules): {Math.round(carJoules)}</label>
-	</div>
-	<div>
-		<label for="wastedCalories">Wasted energy (joules): {Math.round(wastedJoules)}</label>
-	</div>
+	<Table>
+		<TableBody>
+			<TableRow>
+				<TableCell>Biking</TableCell>
+				<TableCell role="checkbox">
+					<Checkbox bind:checked={biking} />
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell>Vehicle MPG</TableCell>
+				<TableCell>{mpg}</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell>Distance by Car (miles)</TableCell>
+				<TableCell>{vehicleDistance}</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell>Time by Car (min)</TableCell>
+				<TableCell>{vehicleTime}</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell>Distance by {biking ? 'Bike' : 'Foot'} (miles)</TableCell>
+				<TableCell>{pedestrianDistance}</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell>Time by {biking ? 'Bike' : 'Foot'} (min)</TableCell>
+				<TableCell>{pedestrianTime}</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell>
+					Calories Burned by {biking ? 'Bike' : 'Foot'} (min)
+				</TableCell>
+				<TableCell>{pedestrianCalories}</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell>Gallons of Gas</TableCell>
+				<TableCell>{gallons}</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell>CO2 Emissions (lbs)</TableCell>
+				<TableCell>{emissions}</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell>Energy Used by Car (J)</TableCell>
+				<TableCell>{carJoules}</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell>Energy Wasted by {biking ? 'Bike' : 'Foot'} (J)</TableCell>
+				<TableCell>{wastedJoules}</TableCell>
+			</TableRow>
+		</TableBody>
+	</Table>
 {/if}
