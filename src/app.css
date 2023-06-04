@@ -79,3 +79,13 @@
 		font-feature-settings: 'rlig' 1, 'calt' 1;
 	}
 }
+
+div.splitpanes.default-theme div.splitpanes__pane {
+	background-color: inherit;
+}
+
+div.splitpanes.default-theme div.splitpanes__splitter {
+	--bg: #888;
+	background-color: var(--bg);
+	border-top: 1px solid var(--bg);
+}
