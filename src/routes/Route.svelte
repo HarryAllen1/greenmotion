@@ -3,7 +3,7 @@
 	import { get } from 'svelte/store';
 	import { map } from './map';
 	import { Button } from '$components/ui/button';
-	import { drivingData } from './data';
+	import { drivingData, bikingData, walkingData } from './data';
 
 	let directionsRenderer: google.maps.DirectionsRenderer;
 	let directionsService: google.maps.DirectionsService;
@@ -15,7 +15,7 @@
 	let endEl: HTMLInputElement;
 	let destination: google.maps.places.Autocomplete;
 
-	let currentlyShown: 'driving' | 'walking' = 'driving';
+	let currentlyShown: 'driving' | 'walking' | 'biking' = 'driving';
 
 	$: currentlyShown, void route(origin, destination);
 
@@ -46,13 +46,25 @@
 				travelMode:
 					currentlyShown === 'driving'
 						? google.maps.TravelMode.DRIVING
-						: google.maps.TravelMode.WALKING,
+						: currentlyShown === 'walking'
+						? google.maps.TravelMode.WALKING
+						: google.maps.TravelMode.BICYCLING,
 			},
 			(res, status) => {
 				if (status === google.maps.DirectionsStatus.OK) {
 					directionsRenderer.setDirections(res);
 					if (currentlyShown === 'driving') {
 						$drivingData = {
+							distance: res?.routes[0].legs[0].distance?.value ?? 0,
+							time: res?.routes[0].legs[0].duration?.value ?? 0,
+						};
+					} else if (currentlyShown === 'walking') {
+						$walkingData = {
+							distance: res?.routes[0].legs[0].distance?.value ?? 0,
+							time: res?.routes[0].legs[0].duration?.value ?? 0,
+						};
+					} else if (currentlyShown === 'biking') {
+						$bikingData = {
 							distance: res?.routes[0].legs[0].distance?.value ?? 0,
 							time: res?.routes[0].legs[0].duration?.value ?? 0,
 						};
@@ -82,8 +94,16 @@
 	<Button
 		variant="secondary"
 		on:click={() =>
-			currentlyShown === 'driving' ? (currentlyShown = 'walking') : (currentlyShown = 'driving')}
+			currentlyShown === 'driving'
+				? (currentlyShown = 'walking')
+				: currentlyShown === 'walking'
+				? (currentlyShown = 'biking')
+				: (currentlyShown = 'driving')}
 	>
-		{currentlyShown === 'driving' ? 'Show walking directions' : 'Show driving directions'}
+		{currentlyShown === 'driving'
+			? 'Show walking directions'
+			: currentlyShown === 'biking'
+			? 'Show driving directions'
+			: 'Show biking directions'}
 	</Button>
 </div>

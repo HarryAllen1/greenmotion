@@ -1,16 +1,15 @@
 <script lang="ts">
 	import {
+		calculateCarJoules,
+		calculateEmissions,
+		calculateGallons,
 		calculatePedestrianCalories,
+		calculateWastedJoules,
 		metersToMiles,
 		secondsToMinutes,
-		calculateEmissions,
-		calculateCarJoules,
-		calculateWastedJoules,
-		calculateGallons,
 	} from 'greenmotion-wasm';
 	import { onMount } from 'svelte';
-	import { drivingData, pedestrianData, carData } from './data';
-
+	import { carData, drivingData, walkingData } from './data';
 
 	let model = $carData.model;
 	let year = $carData.year;
@@ -44,8 +43,8 @@
 					mpg = data.cityMpg;
 					vehicleDistance = metersToMiles($drivingData.distance);
 					vehicleTime = secondsToMinutes($drivingData.time);
-					pedestrianDistance = metersToMiles($pedestrianData.distance);
-					pedestrianTime = secondsToMinutes($pedestrianData.time);
+					pedestrianDistance = metersToMiles($walkingData.distance);
+					pedestrianTime = secondsToMinutes($walkingData.time);
 					pedestrianCalories = calculatePedestrianCalories(biking, weightRange);
 					gallons = calculateGallons(vehicleDistance, mpg);
 					emissions = calculateEmissions(gallons);
