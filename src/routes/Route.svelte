@@ -43,32 +43,51 @@
 			{
 				origin: originPlace.formatted_address ?? '',
 				destination: destinationPlace.formatted_address ?? '',
-				travelMode:
-					currentlyShown === 'driving'
-						? google.maps.TravelMode.DRIVING
-						: currentlyShown === 'walking'
-						? google.maps.TravelMode.WALKING
-						: google.maps.TravelMode.BICYCLING,
+				travelMode: google.maps.TravelMode.DRIVING,
 			},
 			(res, status) => {
 				if (status === google.maps.DirectionsStatus.OK) {
-					directionsRenderer.setDirections(res);
-					if (currentlyShown === 'driving') {
-						$drivingData = {
-							distance: res?.routes[0].legs[0].distance?.value ?? 0,
-							time: res?.routes[0].legs[0].duration?.value ?? 0,
-						};
-					} else if (currentlyShown === 'walking') {
-						$walkingData = {
-							distance: res?.routes[0].legs[0].distance?.value ?? 0,
-							time: res?.routes[0].legs[0].duration?.value ?? 0,
-						};
-					} else if (currentlyShown === 'biking') {
-						$bikingData = {
-							distance: res?.routes[0].legs[0].distance?.value ?? 0,
-							time: res?.routes[0].legs[0].duration?.value ?? 0,
-						};
-					}
+					if (currentlyShown === 'driving') directionsRenderer.setDirections(res);
+					$drivingData = {
+						distance: res?.routes[0].legs[0].distance?.value ?? 0,
+						time: res?.routes[0].legs[0].duration?.value ?? 0,
+					};
+				} else {
+					console.error(status);
+				}
+			}
+		);
+		await directionsService.route(
+			{
+				origin: originPlace.formatted_address ?? '',
+				destination: destinationPlace.formatted_address ?? '',
+				travelMode: google.maps.TravelMode.WALKING,
+			},
+			(res, status) => {
+				if (status === google.maps.DirectionsStatus.OK) {
+					if (currentlyShown === 'walking') directionsRenderer.setDirections(res);
+					$walkingData = {
+						distance: res?.routes[0].legs[0].distance?.value ?? 0,
+						time: res?.routes[0].legs[0].duration?.value ?? 0,
+					};
+				} else {
+					console.error(status);
+				}
+			}
+		);
+		await directionsService.route(
+			{
+				origin: originPlace.formatted_address ?? '',
+				destination: destinationPlace.formatted_address ?? '',
+				travelMode: google.maps.TravelMode.BICYCLING,
+			},
+			(res, status) => {
+				if (status === google.maps.DirectionsStatus.OK) {
+					if (currentlyShown === 'biking') directionsRenderer.setDirections(res);
+					$bikingData = {
+						distance: res?.routes[0].legs[0].distance?.value ?? 0,
+						time: res?.routes[0].legs[0].duration?.value ?? 0,
+					};
 				} else {
 					console.error(status);
 				}
