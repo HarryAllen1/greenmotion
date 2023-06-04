@@ -12,7 +12,7 @@
 <div class="h-[100vh]">
 	<Splitpanes horizontal dblClickSplitter={false}>
 		<Pane minSize={20} size={45}>
-			<Tabs value="route">
+			<Tabs value="vehicle">
 				<TabsList class="grid w-full grid-cols-2">
 					
 					<TabsTrigger value="vehicle">Vehicle</TabsTrigger>
