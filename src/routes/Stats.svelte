@@ -1,34 +1,57 @@
 <script lang="ts">
-	let vehicleMpg = 22;
-	let biking = true;
-	//0-7 for the ranges
-	let weightRange = 2;
-    let weight = (weightRange>0 ? 101+20*weightRange : 100) +"-"+(120+20*weightRange);
-	//miles
-	let vehicleDistance = 4.1;
-	//minutes
-	let vehicleTime = 14;
+    let model = localStorage.getItem('model');
+    let year = localStorage.getItem('year');
+    let make = localStorage.getItem('make');
+	//fetch mpg from carMPG/year-make-model
+    let mpg = 0;
+    fetch(`/carMPG/${year}-${make}-${model}`)
+        .then((res) => res.json())
+        .then((data) => {
+            mpg = data.mpg;
+        });
 
-	let pedestrianDistance = 3.4;
-	let pedestrianTime = 72;
+	let biking = true;
+	let weightRange = 2;
+
+    //miles
+	let vehicleDistance = Number(localStorage.getItem('distance')) || 0;
+	//minutes
+	let vehicleTime = Number(localStorage.getItem('time')) || 0;
+
+	let pedestrianDistance = Number(localStorage.getItem('pDistance')) || 0;
+	let pedestrianTime = Number(localStorage.getItem('pTime')) || 0;
 
 	let pedestrianCalories = biking ? (40 + 5 * weightRange + (60 + 10 * weightRange)) / 2 : 55 + weightRange * 5;
 
-	let gallons = vehicleDistance / vehicleMpg;
+	let gallons = vehicleDistance / mpg;
 	let emissions = 8.887 * gallons;
 	let carJoules = 1200 * vehicleDistance * 4.184;
     let wastedJoules = carJoules - pedestrianCalories * 4.184;
 </script>
-
+{#if model == null}
+    <h1>Choose a car first</h1>
+{:else}
 <h1>Statistics</h1>
 <div>
-	<label for="vehicleMpg">Vehicle MPG: {vehicleMpg}</label>
+	<label for="weight">Weight Range:</label>
+    <select bind:value={weightRange}>
+        <option value="0">100-120</option>
+        <option value="1">121-140</option>
+        <option value="2">141-160</option>
+        <option value="3">161-180</option>
+        <option value="4">181-200</option>
+        <option value="5">201-220</option>
+        <option value="6">221-240</option>
+        <option value="7">241-260</option>
+    </select>
 </div>
+
 <div>
 	<label for="biking">Biking: {biking ? 'Yes' : 'No'}</label>
 </div>
+
 <div>
-	<label for="weight">Weight Range: {weight}</label>
+	<label for="vehicleMpg">Vehicle MPG: {mpg}</label>
 </div>
 
 <div>
@@ -58,4 +81,5 @@
 <div>
     <label for="wastedCalories">Wasted energy (joules): {Math.round(wastedJoules)}</label>
 </div>
+{/if}
 
