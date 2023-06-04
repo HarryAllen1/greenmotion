@@ -69,6 +69,7 @@
 					$walkingData = {
 						distance: res?.routes[0].legs[0].distance?.value ?? 0,
 						time: res?.routes[0].legs[0].duration?.value ?? 0,
+						weight: $walkingData.weight,
 					};
 				} else {
 					console.error(status);
@@ -87,6 +88,7 @@
 					$bikingData = {
 						distance: res?.routes[0].legs[0].distance?.value ?? 0,
 						time: res?.routes[0].legs[0].duration?.value ?? 0,
+						weight: $bikingData.weight,
 					};
 				} else {
 					console.error(status);
