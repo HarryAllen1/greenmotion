@@ -25,7 +25,7 @@
 				</TabsContent>
 			</Tabs>
 		</Pane>
-		<Pane minSize={20}>
+		<Pane minSize={40}>
 			<Stats />
 		</Pane>
 	</Splitpanes>
