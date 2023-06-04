@@ -48,7 +48,7 @@
 		"@googlemaps/js-api-loader": "^1.15.2",
 		"class-variance-authority": "^0.6.0",
 		"clsx": "^1.2.1",
-		"greenmotion-wasm": "^0.3.0",
+		"greenmotion-wasm": "^0.4.0",
 		"lucide-svelte": "^0.233.0",
 		"radix-svelte": "^0.7.1",
 		"svelte-splitpanes": "^0.7.14",

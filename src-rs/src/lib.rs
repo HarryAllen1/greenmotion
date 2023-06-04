@@ -44,3 +44,9 @@ pub fn calculateCarJoules(vehicle_distance: f64) -> f64 {
 pub fn calculateWastedJoules(car_joules: f64, pedestrian_calories: f64) -> f64 {
     car_joules - pedestrian_calories * 4.184
 }
+
+#[wasm_bindgen]
+#[allow(non_snake_case)]
+pub fn calculateGallons(vehicle_distance: f64, mpg: f64) -> f64 {
+    vehicle_distance / mpg
+}
