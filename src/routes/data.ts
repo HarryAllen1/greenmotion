@@ -9,7 +9,13 @@ interface Data {
 	time: number;
 }
 
-export const data = writable<Data>({
+export const drivingData = writable<Data>({
+	energy: 0,
+	distance: 0,
+	time: 0,
+});
+
+export const walkingData = writable<Data>({
 	energy: 0,
 	distance: 0,
 	time: 0,
