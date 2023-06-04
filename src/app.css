@@ -89,3 +89,13 @@ div.splitpanes.default-theme div.splitpanes__splitter {
 	background-color: var(--bg);
 	border-top: 1px solid var(--bg);
 }
+
+.pac-container {
+	background: theme('colors.slate.800');
+}
+.pac-item {
+	filter: invert(1);
+}
+.pac-container::after {
+	display: none;
+}
