@@ -89,7 +89,7 @@
 		</select>
 	</div>
 	<div>
-		<h2>Efficiency of {biking? 'Bike' : 'Foot'} over Car</h2>
+		<h3>Efficiency of {biking? 'Bike' : 'Foot'} over Car</h3>
 		<p>
 			{percentEfficient}% of the energy used by a car is wasted.
 		</p>
