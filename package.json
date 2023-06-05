@@ -49,7 +49,7 @@
 		"class-variance-authority": "^0.6.0",
 		"clsx": "^1.2.1",
 		"greenmotion-wasm": "^0.6.0",
-		"lucide-svelte": "^0.234.0",
+		"lucide-svelte": "^0.236.0",
 		"radix-svelte": "^0.7.1",
 		"svelte-splitpanes": "^0.7.14",
 		"tailwind-merge": "^1.13.0",
