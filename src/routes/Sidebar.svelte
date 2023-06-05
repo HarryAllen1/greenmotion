@@ -11,10 +11,9 @@
 
 <div class="h-[100vh]">
 	<Splitpanes horizontal dblClickSplitter={false}>
-		<Pane minSize={20} size={45}>
+		<Pane minSize={10} size={45}>
 			<Tabs value="vehicle">
 				<TabsList class="grid w-full grid-cols-2">
-					
 					<TabsTrigger value="vehicle">Vehicle</TabsTrigger>
 					<TabsTrigger value="route">Route</TabsTrigger>
 				</TabsList>
@@ -26,7 +25,7 @@
 				</TabsContent>
 			</Tabs>
 		</Pane>
-		<Pane minSize={70} class="p-4 pt-0 h-full overflow-y-scroll">
+		<Pane minSize={10} class="p-4 pt-0 h-full overflow-y-scroll">
 			<Stats />
 		</Pane>
 	</Splitpanes>
