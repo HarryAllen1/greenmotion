@@ -1,0 +1,16 @@
+{
+	"image": "mcr.microsoft.com/devcontainers/universal:2",
+	"features": {
+		"ghcr.io/devcontainers/features/rust:1": {
+			"version": "latest",
+			"profile": "minimal"
+		}
+	},
+	"forwardPorts": [5173],
+	"customizations": {
+		"vscode": {
+			"extensions": ["svelte.svelte-vscode", "esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]
+		}
+	},
+	"postCreateCommand": "pnpm i -g pnpm@latest && pnpm i && pnpm dev"
+}
