@@ -1,12 +1,9 @@
 <script lang="ts">
-	import { Tabs } from '$components/ui/tabs';
-	import { TabsContent } from '$components/ui/tabs';
-	import { TabsList } from '$components/ui/tabs';
-	import { TabsTrigger } from '$components/ui/tabs';
-	import { Splitpanes, Pane } from 'svelte-splitpanes';
+	import { Tabs, TabsContent, TabsList, TabsTrigger } from '$components/ui/tabs';
+	import { Pane, Splitpanes } from 'svelte-splitpanes';
 	import Route from './Route.svelte';
-	import Vehicle from './Vehicle.svelte';
 	import Stats from './Stats.svelte';
+	import Vehicle from './Vehicle.svelte';
 </script>
 
 <div class="h-[100vh]">
