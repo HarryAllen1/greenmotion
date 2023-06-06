@@ -23,7 +23,7 @@
 		"@types/node": "^20.2.5",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
-		"@vitest/browser": "^0.31.4",
+		"@vitest/browser": "^0.32.0",
 		"autoprefixer": "^10.4.14",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
@@ -41,7 +41,7 @@
 		"vite": "^4.3.0",
 		"vite-imagetools": "^5.0.4",
 		"vite-plugin-wasm": "^3.2.2",
-		"vitest": "^0.31.4"
+		"vitest": "^0.32.0"
 	},
 	"type": "module",
 	"dependencies": {
