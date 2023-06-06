@@ -12,7 +12,7 @@
 
 <div class="h-[100vh]">
 	<Splitpanes horizontal dblClickSplitter={false}>
-		<Pane minSize={10} size={45}>
+		<Pane size={45}>
 			<Tabs value="vehicle">
 				<TabsList class="grid w-full grid-cols-2">
 					<TabsTrigger value="vehicle">Vehicle</TabsTrigger>
@@ -27,7 +27,7 @@
 			</Tabs>
 		</Pane>
 		{#if vehicleDistance && make && model && year}
-			<Pane minSize={10} class="p-4 pt-0 h-full overflow-y-scroll">
+			<Pane class="p-4 pt-0 h-full overflow-y-scroll">
 				<Stats />
 			</Pane>
 		{/if}
