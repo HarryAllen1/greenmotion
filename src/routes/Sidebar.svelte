@@ -4,6 +4,10 @@
 	import Route from './Route.svelte';
 	import Stats from './Stats.svelte';
 	import Vehicle from './Vehicle.svelte';
+	import { carData, drivingData } from './data';
+
+	$: vehicleDistance = $drivingData.distance;
+	$: ({ make, model, year } = $carData);
 </script>
 
 <div class="h-[100vh]">
@@ -22,8 +26,10 @@
 				</TabsContent>
 			</Tabs>
 		</Pane>
-		<Pane minSize={10} class="p-4 pt-0 h-full overflow-y-scroll">
-			<Stats />
-		</Pane>
+		{#if vehicleDistance && make && model && year}
+			<Pane minSize={10} class="p-4 pt-0 h-full overflow-y-scroll">
+				<Stats />
+			</Pane>
+		{/if}
 	</Splitpanes>
 </div>
