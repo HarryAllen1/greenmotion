@@ -23,8 +23,8 @@ dependencies:
     specifier: ^0.6.0
     version: 0.6.0
   lucide-svelte:
-    specifier: ^0.241.0
-    version: 0.241.0(svelte@3.59.1)
+    specifier: ^0.242.0
+    version: 0.242.0(svelte@3.59.1)
   radix-svelte:
     specifier: ^0.7.1
     version: 0.7.1(patch_hash=bbhxoepk543i3gcwm2bbzv5ipe)(svelte@3.59.1)
@@ -32,11 +32,11 @@ dependencies:
     specifier: ^0.7.14
     version: 0.7.14(svelte@3.59.1)
   tailwind-merge:
-    specifier: ^1.13.0
-    version: 1.13.0
+    specifier: ^1.13.1
+    version: 1.13.1
   tailwindcss-animate:
-    specifier: ^1.0.5
-    version: 1.0.5(tailwindcss@3.3.2)
+    specifier: ^1.0.6
+    version: 1.0.6(tailwindcss@3.3.2)
 
 devDependencies:
   '@sveltejs/adapter-vercel':
@@ -52,11 +52,11 @@ devDependencies:
     specifier: ^0.5.9
     version: 0.5.9(tailwindcss@3.3.2)
   '@types/google.maps':
-    specifier: ^3.53.3
-    version: 3.53.3
+    specifier: ^3.53.4
+    version: 3.53.4
   '@types/node':
-    specifier: ^20.2.5
-    version: 20.2.5
+    specifier: ^20.3.0
+    version: 20.3.0
   '@typescript-eslint/eslint-plugin':
     specifier: ^5.59.9
     version: 5.59.9(@typescript-eslint/parser@5.59.9)(eslint@8.42.0)(typescript@5.1.3)
@@ -82,8 +82,8 @@ devDependencies:
     specifier: ^47.0.0
     version: 47.0.0(eslint@8.42.0)
   playwright:
-    specifier: ^1.34.3
-    version: 1.34.3
+    specifier: ^1.35.0
+    version: 1.35.0
   postcss:
     specifier: ^8.4.24
     version: 8.4.24
@@ -110,7 +110,7 @@ devDependencies:
     version: 5.1.3
   vite:
     specifier: ^4.3.0
-    version: 4.3.9(@types/node@20.2.5)
+    version: 4.3.9(@types/node@20.3.0)
   vite-imagetools:
     specifier: ^5.0.4
     version: 5.0.4(rollup@2.79.1)
@@ -119,7 +119,7 @@ devDependencies:
     version: 3.2.2(vite@4.3.9)
   vitest:
     specifier: ^0.32.0
-    version: 0.32.0(@vitest/browser@0.32.0)(playwright@1.34.3)
+    version: 0.32.0(@vitest/browser@0.32.0)(playwright@1.35.0)
 
 packages:
 
@@ -571,7 +571,7 @@ packages:
       svelte: 3.59.1
       tiny-glob: 0.2.9
       undici: 5.22.1
-      vite: 4.3.9(@types/node@20.2.5)
+      vite: 4.3.9(@types/node@20.3.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -587,7 +587,7 @@ packages:
       '@sveltejs/vite-plugin-svelte': 2.4.1(svelte@3.59.1)(vite@4.3.9)
       debug: 4.3.4
       svelte: 3.59.1
-      vite: 4.3.9(@types/node@20.2.5)
+      vite: 4.3.9(@types/node@20.3.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -606,7 +606,7 @@ packages:
       magic-string: 0.30.0
       svelte: 3.59.1
       svelte-hmr: 0.15.2(svelte@3.59.1)
-      vite: 4.3.9(@types/node@20.2.5)
+      vite: 4.3.9(@types/node@20.3.0)
       vitefu: 0.2.4(vite@4.3.9)
     transitivePeerDependencies:
       - supports-color
@@ -655,16 +655,16 @@ packages:
     resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
     dev: true
 
-  /@types/google.maps@3.53.3:
-    resolution: {integrity: sha512-OWsq1TU8r+Df4v/jLFJBqaNzDwFtEhEoImH37uVUSSgxCG5w00Tanw7DRIhKh5+C0A3q7Kv+eww8kM6hgKErYA==}
+  /@types/google.maps@3.53.4:
+    resolution: {integrity: sha512-IiDAYTONQEKCBssPtoM0XqWF8YIIk2leba4NOf9qVQ/d8l5gLuS3QT87TrX6/u8rMonQAXC9KEDmM4q7sT6MWg==}
     dev: true
 
   /@types/json-schema@7.0.12:
     resolution: {integrity: sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==}
     dev: true
 
-  /@types/node@20.2.5:
-    resolution: {integrity: sha512-JJulVEQXmiY9Px5axXHeYGLSjhkZEnD+MDPDGbCbIAbMslkKwmygtZFy1X6s/075Yo94sf8GuSlFfPzysQrWZQ==}
+  /@types/node@20.3.0:
+    resolution: {integrity: sha512-cumHmIAf6On83X7yP+LrsEyUOf/YlociZelmpRYaGFydoaPdxdt80MAbu6vWerQT2COCp2nPvHdsbD7tHn/YlQ==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
@@ -837,7 +837,7 @@ packages:
     dependencies:
       modern-node-polyfills: 0.1.3(rollup@2.79.1)
       sirv: 2.0.3
-      vitest: 0.32.0(@vitest/browser@0.32.0)(playwright@1.34.3)
+      vitest: 0.32.0(@vitest/browser@0.32.0)(playwright@1.35.0)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -2276,8 +2276,8 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /lucide-svelte@0.241.0(svelte@3.59.1):
-    resolution: {integrity: sha512-y6wDjiTaWF9dIFGVCJpELAuhsKN7CiU21vhOnW9Adhi2YbYMOVhNUxceIf6JDuJOg6ZiV1r5cffi92fyvkLd3Q==}
+  /lucide-svelte@0.242.0(svelte@3.59.1):
+    resolution: {integrity: sha512-0gfPXDyyatunJEYHZGevVIN/9qjSpB76venre/aip/eOqDQKAENbLvOrayVllE58uq1kTyCLCn7v3CtRDfS/gw==}
     peerDependencies:
       svelte: ^3.49.0
     dependencies:
@@ -2650,19 +2650,19 @@ packages:
       pathe: 1.1.1
     dev: true
 
-  /playwright-core@1.34.3:
-    resolution: {integrity: sha512-2pWd6G7OHKemc5x1r1rp8aQcpvDh7goMBZlJv6Co5vCNLVcQJdhxRL09SGaY6HcyHH9aT4tiynZabMofVasBYw==}
-    engines: {node: '>=14'}
+  /playwright-core@1.35.0:
+    resolution: {integrity: sha512-muMXyPmIx/2DPrCHOD1H1ePT01o7OdKxKj2ebmCAYvqhUy+Y1bpal7B0rdoxros7YrXI294JT/DWw2LqyiqTPA==}
+    engines: {node: '>=16'}
     hasBin: true
     dev: true
 
-  /playwright@1.34.3:
-    resolution: {integrity: sha512-UOOVE4ZbGfGkP1KVqWTdXOmm8Pw2pBhfbmlqKMkpiRCQjL5W+J+xRQXpgutFr0iM4pWl8g0GyyASMsqjQfFohw==}
-    engines: {node: '>=14'}
+  /playwright@1.35.0:
+    resolution: {integrity: sha512-xhFhsoBmKPQfj3dM+HbIiFVlqRCZp2rwdJd/QFd9YBuidabo3TkVv0iuxPQ4vZoMwtSI7qzjY93f5ohdC97hww==}
+    engines: {node: '>=16'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      playwright-core: 1.34.3
+      playwright-core: 1.35.0
     dev: true
 
   /pluralize@8.0.0:
@@ -3320,12 +3320,12 @@ packages:
     resolution: {integrity: sha512-pKj8fEBmqf6mq3/NfrB9SLtcJcUvjYSWyePlfCqN9gujLB25RitWK8PvFzlwim6hD/We35KbPlRteuA6rnPGcQ==}
     engines: {node: '>= 8'}
 
-  /tailwind-merge@1.13.0:
-    resolution: {integrity: sha512-mUTmDbcU+IhOvJ0c42eLQ/nRkvolTqfpVaVQRSxfJAv9TabS6Y2zW/1wKpKLdKzyL3Gh8j6NTLl6MWNmvOM6kA==}
+  /tailwind-merge@1.13.1:
+    resolution: {integrity: sha512-tRtRN22TDokGi2TuYSvuHQuuW6BJ/zlUEG+iYpAQ9i66msc/0eU/+HPccbPnNNH0mCPp0Ob8thaC8Uy9CxHitQ==}
     dev: false
 
-  /tailwindcss-animate@1.0.5(tailwindcss@3.3.2):
-    resolution: {integrity: sha512-UU3qrOJ4lFQABY+MVADmBm+0KW3xZyhMdRvejwtXqYOL7YjHYxmuREFAZdmVG5LPe5E9CAst846SLC4j5I3dcw==}
+  /tailwindcss-animate@1.0.6(tailwindcss@3.3.2):
+    resolution: {integrity: sha512-4WigSGMvbl3gCCact62ZvOngA+PRqhAn7si3TQ3/ZuPuQZcIEtVap+ENSXbzWhpojKB8CpvnIsrwBu8/RnHtuw==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
     dependencies:
@@ -3558,7 +3558,7 @@ packages:
       - rollup
     dev: true
 
-  /vite-node@0.32.0(@types/node@20.2.5):
+  /vite-node@0.32.0(@types/node@20.3.0):
     resolution: {integrity: sha512-220P/y8YacYAU+daOAqiGEFXx2A8AwjadDzQqos6wSukjvvTWNqleJSwoUn0ckyNdjHIKoxn93Nh1vWBqEKr3Q==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -3568,7 +3568,7 @@ packages:
       mlly: 1.3.0
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 4.3.9(@types/node@20.2.5)
+      vite: 4.3.9(@types/node@20.3.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -3584,10 +3584,10 @@ packages:
     peerDependencies:
       vite: ^2 || ^3 || ^4
     dependencies:
-      vite: 4.3.9(@types/node@20.2.5)
+      vite: 4.3.9(@types/node@20.3.0)
     dev: true
 
-  /vite@4.3.9(@types/node@20.2.5):
+  /vite@4.3.9(@types/node@20.3.0):
     resolution: {integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -3612,7 +3612,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.2.5
+      '@types/node': 20.3.0
       esbuild: 0.17.19
       postcss: 8.4.24
       rollup: 3.23.1
@@ -3628,10 +3628,10 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.3.9(@types/node@20.2.5)
+      vite: 4.3.9(@types/node@20.3.0)
     dev: true
 
-  /vitest@0.32.0(@vitest/browser@0.32.0)(playwright@1.34.3):
+  /vitest@0.32.0(@vitest/browser@0.32.0)(playwright@1.35.0):
     resolution: {integrity: sha512-SW83o629gCqnV3BqBnTxhB10DAwzwEx3z+rqYZESehUB+eWsJxwcBQx7CKy0otuGMJTYh7qCVuUX23HkftGl/Q==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -3664,7 +3664,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.5
       '@types/chai-subset': 1.3.3
-      '@types/node': 20.2.5
+      '@types/node': 20.3.0
       '@vitest/browser': 0.32.0(rollup@2.79.1)(vitest@0.32.0)
       '@vitest/expect': 0.32.0
       '@vitest/runner': 0.32.0
@@ -3681,13 +3681,13 @@ packages:
       magic-string: 0.30.0
       pathe: 1.1.1
       picocolors: 1.0.0
-      playwright: 1.34.3
+      playwright: 1.35.0
       std-env: 3.3.3
       strip-literal: 1.0.1
       tinybench: 2.5.0
       tinypool: 0.5.0
-      vite: 4.3.9(@types/node@20.2.5)
-      vite-node: 0.32.0(@types/node@20.2.5)
+      vite: 4.3.9(@types/node@20.3.0)
+      vite-node: 0.32.0(@types/node@20.3.0)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
