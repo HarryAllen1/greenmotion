@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -23,8 +23,8 @@ dependencies:
     specifier: ^0.6.0
     version: 0.6.0
   lucide-svelte:
-    specifier: ^0.242.0
-    version: 0.242.0(svelte@3.59.1)
+    specifier: ^0.244.0
+    version: 0.244.0(svelte@3.59.1)
   radix-svelte:
     specifier: ^0.7.1
     version: 0.7.1(patch_hash=bbhxoepk543i3gcwm2bbzv5ipe)(svelte@3.59.1)
@@ -2276,8 +2276,8 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /lucide-svelte@0.242.0(svelte@3.59.1):
-    resolution: {integrity: sha512-0gfPXDyyatunJEYHZGevVIN/9qjSpB76venre/aip/eOqDQKAENbLvOrayVllE58uq1kTyCLCn7v3CtRDfS/gw==}
+  /lucide-svelte@0.244.0(svelte@3.59.1):
+    resolution: {integrity: sha512-FOzIF+1EUHllYLmSCLo0UFqyI6+796lcBLKnA7wz21TELGETlR/xzJDEiU7YlS8ybRau2t3lzFv8h4Wj8z3oDQ==}
     peerDependencies:
       svelte: ^3.49.0
     dependencies:
