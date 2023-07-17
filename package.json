@@ -46,7 +46,7 @@
 	"type": "module",
 	"dependencies": {
 		"@googlemaps/js-api-loader": "^1.16.1",
-		"class-variance-authority": "^0.6.0",
+		"class-variance-authority": "^0.7.0",
 		"clsx": "^1.2.1",
 		"greenmotion-wasm": "^0.6.0",
 		"lucide-svelte": "^0.245.0",
